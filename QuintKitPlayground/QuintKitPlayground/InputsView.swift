@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import QuintKit
+import QuintKitUI
 
 struct InputsView: View {
     @State private var dictationTextFieldText = String()
