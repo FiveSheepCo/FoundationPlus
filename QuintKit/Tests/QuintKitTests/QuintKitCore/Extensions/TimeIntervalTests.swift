@@ -2,6 +2,7 @@ import XCTest
 @testable import QuintKitCore
 
 final class Core__TimeIntervalTests: XCTestCase {
+    
     func testSubUnits() throws {
         let subject: TimeInterval = 432000 // 5 days
         let expectedDays: TimeInterval = 5
