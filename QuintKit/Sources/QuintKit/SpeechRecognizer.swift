@@ -1,9 +1,13 @@
 import Foundation
-import AVFoundation
-import Speech
 import SwiftUI
 
+#if os(iOS)
+
+import AVFoundation
+import Speech
+
 /// A helper for transcribing speech to text using SFSpeechRecognizer and AVAudioEngine.
+@available(iOS 14.0, *)
 actor SpeechRecognizer: ObservableObject {
     enum RecognizerError: Error {
         case nilRecognizer
@@ -182,3 +186,26 @@ extension AVAudioSession {
         }
     }
 }
+
+#elseif os(macOS)
+
+// TODO: This is a stub on macOS.
+actor SpeechRecognizer: ObservableObject {
+    @MainActor
+    @Published
+    var transcript: String = ""
+    
+    init(locale: Locale) {
+    }
+    
+    @MainActor func startTranscribing() {
+    }
+    
+    @MainActor func resetTranscript() {
+    }
+    
+    @MainActor func stopTranscribing() {
+    }
+}
+
+#endif
