@@ -1,12 +1,12 @@
 import SwiftUI
 
-@available(iOS 14.0, *)
+@available(iOS 14.0, macOS 11.0, *)
 struct CompatibleOnChangeModifier<V: Equatable>: ViewModifier {
     var value: V
     var callback: (V) -> Void
     
     func body(content: Content) -> some View {
-        if #available(iOS 17.0, *) {
+        if #available(iOS 17.0, macOS 14.0, *) {
             content
                 .onChange(of: value) { _ , newValue in
                     callback(newValue)
@@ -20,7 +20,7 @@ struct CompatibleOnChangeModifier<V: Equatable>: ViewModifier {
     }
 }
 
-@available(iOS 14.0, *)
+@available(iOS 14.0, macOS 11.0, *)
 extension View {
     
     /// Adds a modifier for this view that fires an action when a specific value changes.
@@ -29,7 +29,7 @@ extension View {
     /// ```swift
     /// onChange(of: _, perform: (Equatable) -> Void)
     /// ```
-    /// Uses the new signature if available (`iOS 17.0, *`):
+    /// Uses the new signature if available (`iOS 17.0, macOS 14.0, *`):
     /// ```swift
     /// onChange(of: _, action: (Equatable, Equatable) -> Void)
     /// ```
