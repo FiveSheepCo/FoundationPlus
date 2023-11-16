@@ -8,4 +8,8 @@ final class Core__CharacterTests: XCTestCase {
         XCTAssertEqual(Character.newline, "\n")
         XCTAssertEqual(Character.tab, "\t")
     }
+    
+    func testToString() throws {
+        XCTAssertEqual(Character.space.toString, String(" "))
+    }
 }
