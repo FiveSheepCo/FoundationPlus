@@ -3,6 +3,21 @@ import XCTest
 @testable import SchafKitShim
 
 final class Core__DoubleTests: XCTestCase {
+    let en_US = {
+        if #available(iOS 16.0, *) {
+            Locale(languageCode: .english)
+        } else {
+            Locale(identifier: "en_US")
+        }
+    }()
+    
+    let de_DE = {
+        if #available(iOS 16.0, *) {
+            Locale(languageCode: .german)
+        } else {
+            Locale(identifier: "de_DE")
+        }
+    }()
     
     func testToString() throws {
         XCTAssertEqual(10.0.toString, "10.0")
@@ -10,8 +25,6 @@ final class Core__DoubleTests: XCTestCase {
     }
     
     func testToFormattedString() throws {
-        let en_US = Locale(languageCode: .english)
-        let de_DE = Locale(languageCode: .german)
         XCTAssertEqual(10.0.toFormattedString(.natural), "10")
         XCTAssertEqual(10.5.toFormattedString(.natural), "10.5")
         XCTAssertEqual(10.123.toFormattedString(.natural), "10.12")
@@ -29,13 +42,13 @@ final class Core__DoubleTests: XCTestCase {
     
     func testToFormattedStringShim() throws {
         XCTAssertEqual(10.5.toFormattedString(), "10.5")
-        XCTAssertEqual(10.0.toFormattedString(decimals: 0, separatesThousands: false, locale: .init(languageCode: .english)), "10")
-        XCTAssertEqual(10.0.toFormattedString(decimals: 0, separatesThousands: true, locale: .init(languageCode: .english)), "10")
-        XCTAssertEqual(10.0.toFormattedString(decimals: 2, separatesThousands: false, locale: .init(languageCode: .english)), "10")
-        XCTAssertEqual(10.0.toFormattedString(decimals: 2, separatesThousands: true, locale: .init(languageCode: .english)), "10")
-        XCTAssertEqual(10.5.toFormattedString(decimals: 2, separatesThousands: false, locale: .init(languageCode: .english)), "10.5")
-        XCTAssertEqual(10.5.toFormattedString(decimals: 2, separatesThousands: true, locale: .init(languageCode: .english)), "10.5")
-        XCTAssertEqual(1000.0.toFormattedString(decimals: 2, separatesThousands: false, locale: .init(languageCode: .english)), "1000")
-        XCTAssertEqual(1000.0.toFormattedString(decimals: 2, separatesThousands: true, locale: .init(languageCode: .english)), "1,000")
+        XCTAssertEqual(10.0.toFormattedString(decimals: 0, separatesThousands: false, locale: en_US), "10")
+        XCTAssertEqual(10.0.toFormattedString(decimals: 0, separatesThousands: true, locale: en_US), "10")
+        XCTAssertEqual(10.0.toFormattedString(decimals: 2, separatesThousands: false, locale: en_US), "10")
+        XCTAssertEqual(10.0.toFormattedString(decimals: 2, separatesThousands: true, locale: en_US), "10")
+        XCTAssertEqual(10.5.toFormattedString(decimals: 2, separatesThousands: false, locale: en_US), "10.5")
+        XCTAssertEqual(10.5.toFormattedString(decimals: 2, separatesThousands: true, locale: en_US), "10.5")
+        XCTAssertEqual(1000.0.toFormattedString(decimals: 2, separatesThousands: false, locale: en_US), "1000")
+        XCTAssertEqual(1000.0.toFormattedString(decimals: 2, separatesThousands: true, locale: en_US), "1,000")
     }
 }
