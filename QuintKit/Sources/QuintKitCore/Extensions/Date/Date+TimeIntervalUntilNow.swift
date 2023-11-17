@@ -9,7 +9,7 @@ public extension Date {
     /// it's negative.
     ///
     /// Example:
-    /// ```
+    /// ```swift
     /// let pastDate = Date(timeIntervalSinceNow: -300) // 5 minutes in the past
     /// let interval = pastDate.timeIntervalUntilNow // About 300 seconds
     /// ```
@@ -27,7 +27,7 @@ public extension Date {
     /// - Parameter timeIntervalUntilNow: The seconds before now. Positive values indicate the past.
     ///
     /// Example:
-    /// ```
+    /// ```swift
     /// let dateFiveSecondsAgo = Date(timeIntervalUntilNow: 5) // Represents 5 seconds ago
     /// ```
     ///

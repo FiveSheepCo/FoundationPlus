@@ -8,7 +8,7 @@ public extension Date {
     /// to the current timezone. Useful for day-by-day date comparisons.
     ///
     /// Example:
-    /// ```
+    /// ```swift
     /// let now = Date()
     /// let justTheDate = now.dateOnly // Today's date, time at 00:00:00
     /// ```
