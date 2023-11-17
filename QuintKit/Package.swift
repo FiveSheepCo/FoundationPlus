@@ -16,6 +16,12 @@ let package = Package(
             targets: ["QuintKitCore", "QuintKitAlerting", "QuintKitNetworking", "QuintKitUI"]
         ),
         
+        // The full QuintKit package with all modules and SchafKit shim included.
+        .library(
+            name: "QuintSchafKit",
+            targets: ["QuintKitCore", "QuintKitAlerting", "QuintKitNetworking", "QuintKitUI", "SchafKitShim"]
+        ),
+        
         // Core module.
         // Provides foundational extensions, general helpers and shared core functionality.
         .library(
@@ -43,6 +49,16 @@ let package = Package(
             name: "QuintKit UI",
             targets: ["QuintKitUI"]
         ),
+        
+        // SchafKit compatibility module.
+        //
+        // Since QuintKit makes some architectural choices that are different from SchafKit and
+        // would result in breakage when used as a drop-in replacement, this module is intended
+        // to implement missing or incompatible SchafKit functionality on top of QuintKit.
+        .library(
+            name: "QuintKit SchafKit Shim",
+            targets: ["SchafKitShim"]
+        )
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -51,6 +67,7 @@ let package = Package(
         .target(name: "QuintKitAlerting", dependencies: ["QuintKitCore"]),
         .target(name: "QuintKitNetworking", dependencies: ["QuintKitCore"]),
         .target(name: "QuintKitUI", dependencies: ["QuintKitCore"]),
+        .target(name: "SchafKitShim", dependencies: ["QuintKitCore"]),
         .testTarget(
             name: "QuintKitTests",
             dependencies: [
