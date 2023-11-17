@@ -74,7 +74,8 @@ let package = Package(
                 "QuintKitCore",
                 "QuintKitAlerting",
                 "QuintKitNetworking",
-                "QuintKitUI"
+                "QuintKitUI",
+                "SchafKitShim"
             ]
         ),
     ]
