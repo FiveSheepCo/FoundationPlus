@@ -1,6 +1,6 @@
 import Foundation
 
-extension TimeInterval {
+public extension TimeInterval {
     
     /// Retrieves the total number of days in the time interval.
     /// This property divides the interval's total seconds by 86,400 (seconds in a day) to calculate
@@ -13,7 +13,7 @@ extension TimeInterval {
     /// ```
     ///
     /// - Returns: Total number of days as a Double.
-    public var days: Double {
+    var days: Double {
         self / 86400
     }
     
@@ -28,7 +28,7 @@ extension TimeInterval {
     /// ```
     ///
     /// - Returns: Total number of hours as a Double.
-    public var hours: Double {
+    var hours: Double {
         self / 3600
     }
     
@@ -43,7 +43,7 @@ extension TimeInterval {
     /// ```
     ///
     /// - Returns: Total number of minutes as a Double.
-    public var minutes: Double {
+    var minutes: Double {
         self / 60
     }
     
@@ -58,7 +58,7 @@ extension TimeInterval {
     /// ```
     ///
     /// - Returns: Total number of seconds as a Double.
-    public var seconds: Double {
+    var seconds: Double {
         self
     }
 }

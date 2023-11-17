@@ -1,6 +1,6 @@
 import Foundation
 
-extension TimeInterval {
+public extension TimeInterval {
     
     /// Retrieves the day component of the time interval,
     /// representing the number of days within the current year.
@@ -15,7 +15,7 @@ extension TimeInterval {
     /// ```
     ///
     /// - Returns: The day component as a Double, disregarding leap years.
-    public var dayComponent: Double {
+    var dayComponent: Double {
         days.truncatingRemainder(dividingBy: 365)
     }
     
@@ -32,7 +32,7 @@ extension TimeInterval {
     /// ```
     ///
     /// - Returns: The hour component as a Double.
-    public var hourComponent: Double {
+    var hourComponent: Double {
         hours.truncatingRemainder(dividingBy: 24)
     }
     
@@ -49,7 +49,7 @@ extension TimeInterval {
     /// ```
     ///
     /// - Returns: The minute component as a Double.
-    public var minuteComponent: Double {
+    var minuteComponent: Double {
         minutes.truncatingRemainder(dividingBy: 60)
     }
     
@@ -66,7 +66,7 @@ extension TimeInterval {
     /// ```
     ///
     /// - Returns: The second component as a Double.
-    public var secondComponent: Double {
+    var secondComponent: Double {
         self.truncatingRemainder(dividingBy: 60)
     }
     
@@ -83,7 +83,7 @@ extension TimeInterval {
     /// ```
     ///
     /// - Returns: A `DateComponents` object containing day, hour, minute, and second components.
-    public var dateComponents: DateComponents {
+    var dateComponents: DateComponents {
         DateComponents(
             day: Int(dayComponent),
             hour: Int(hourComponent),

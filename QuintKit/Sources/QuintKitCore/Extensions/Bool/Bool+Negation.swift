@@ -1,6 +1,6 @@
 import Foundation
 
-extension Bool {
+public extension Bool {
     
     /// A Boolean value that is the logical negation of the original value.
     ///
@@ -16,7 +16,7 @@ extension Bool {
     /// ```
     ///
     /// - Returns: The negated (inverted) value of the Boolean.
-    public var negated: Self {
+    var negated: Self {
         !self
     }
 }
