@@ -1,4 +1,5 @@
 import XCTest
+
 @testable import QuintKitCore
 
 final class Core__CollectionTests: XCTestCase {
