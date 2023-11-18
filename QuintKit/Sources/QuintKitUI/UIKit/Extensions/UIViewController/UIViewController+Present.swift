@@ -43,6 +43,31 @@ public extension UIViewController {
     func present(_ viewController: UIViewController){
         present(viewController, animated: true, completion: nil)
     }
+    
+    /// Presents the responder inside a `UINavigationController`.
+    ///
+    /// - Parameters:
+    ///   - animated : Whether to animate the presentation.
+    ///   - addingDoneButton : Whether to add a `UIBarButtonItem` with `UIBarButtonSystemItem.done` to the `rightBarButtonItems`.
+    ///   - addingCancelButton : Whether to add a `UIBarButtonItem` with `UIBarButtonSystemItem.cancel` to the `leftBarButtonItems`.
+    ///   - completion : Called after the presentation has completed.
+    func presentWithNavigationController(
+        viewControllerToPresent: UIViewController,
+        animated: Bool = true,
+        addingDoneButton: Bool = false,
+        addingCancelButton: Bool = false,
+        completion: (() -> Void)? = nil
+    ) {
+        if addingDoneButton {
+            viewControllerToPresent.navigationItem.rightBarButtonItems = (viewControllerToPresent.navigationItem.rightBarButtonItems ?? []) + [UIBarButtonItem(barButtonSystemItem: .done, target: viewControllerToPresent, action: #selector(dismiss(animated:completion:)))] // TODO: Look if this adds it to the right direction
+        }
+        if addingCancelButton {
+            viewControllerToPresent.navigationItem.leftBarButtonItems = (viewControllerToPresent.navigationItem.leftBarButtonItems ?? []) + [UIBarButtonItem(barButtonSystemItem: .cancel, target: viewControllerToPresent, action: #selector(dismiss(animated:completion:)))] // TODO: Look if this adds it to the right direction
+        }
+        
+        let navigationController = UINavigationController(rootViewController: viewControllerToPresent)
+        present(navigationController, animated: animated, completion: completion)
+    }
 }
 
 #endif
