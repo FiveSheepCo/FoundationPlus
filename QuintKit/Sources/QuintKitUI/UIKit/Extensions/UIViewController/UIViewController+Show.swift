@@ -56,8 +56,6 @@ public extension UIViewController {
                 UINavigationController(rootViewController: controller)
             }
         }
-        
-        // SHIM: Shim as get(for controller: UIViewController) -> UIViewController
     }
 
     
