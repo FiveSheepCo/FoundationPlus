@@ -27,7 +27,13 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        ios-version: ['13.0', '14.0', '15.0', '16.0', '17.0']
+        include:
+          - ios-version: '13.0'
+            device: 'iPhone 11'
+          - ios-version: '15.0'
+            device: 'iPhone 13'
+          - ios-version: '17.0'
+            device: 'iPhone 15'
     steps:
     - uses: actions/checkout@v3
     - name: Setup Xcode 15
@@ -35,10 +41,10 @@ jobs:
       with:
         xcode-version: 15
     - name: Build (iOS)
-      run: xcodebuild build -scheme QuintKit-Package -sdk iphoneos -destination 'generic/platform=iOS,OS=${{ matrix.ios-version }}'
+      run: xcodebuild build -scheme QuintKit-Package -sdk iphoneos -destination 'generic/platform=iOS,OS=${{ matrix.ios-version }},Name=${{ matrix.device }}'
       working-directory: QuintKit
     - name: Test (iOS)
-      run: xcodebuild test -scheme QuintKit-Package -sdk iphoneos -destination 'platform=iOS Simulator,OS=${{ matrix.ios-version }}'
+      run: xcodebuild test -scheme QuintKit-Package -sdk iphoneos -destination 'platform=iOS Simulator,OS=${{ matrix.ios-version }},Name=${{ matrix.device }}'
       working-directory: QuintKit
 
   tvos:
