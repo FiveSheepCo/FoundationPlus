@@ -89,10 +89,7 @@ let package = Package(
         .testTarget(
             name: "QuintKitTests",
             dependencies: [
-                "QuintKitCore",
-                "QuintKitAlerting",
-                "QuintKitNetworking",
-                "QuintKitUI",
+                "QuintKit",
                 "SchafKitShim"
             ]
         ),

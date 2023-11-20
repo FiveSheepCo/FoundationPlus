@@ -27,17 +27,7 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        include:
-          - ios-version: '13.0'
-            device: 'iPhone 11'
-          - ios-version: '14.0'
-            device: 'iPhone 12'
-          - ios-version: '15.0'
-            device: 'iPhone 13'
-          - ios-version: '16.0'
-            device: 'iPhone 14'
-          - ios-version: '17.0'
-            device: 'iPhone 15'
+        ios-version: ['13.0', '14.0', '15.0', '16.0', '17.0']
     steps:
     - uses: actions/checkout@v3
     - name: Setup Xcode 15
@@ -45,10 +35,10 @@ jobs:
       with:
         xcode-version: 15
     - name: Build (iOS)
-      run: xcodebuild build -scheme QuintKit -sdk iphoneos -destination 'generic/platform=iOS,OS=${{ matrix.ios-version }}'
+      run: xcodebuild build -scheme QuintKit-Package -sdk iphoneos -destination 'generic/platform=iOS,OS=${{ matrix.ios-version }}'
       working-directory: QuintKit
     - name: Test (iOS)
-      run: xcodebuild test -scheme QuintKitTests -sdk iphoneos -destination 'platform=iOS Simulator,OS=${{ matrix.ios-version }},name=${{ matrix.device }}'
+      run: xcodebuild test -scheme QuintKit-Package -sdk iphoneos -destination 'platform=iOS Simulator,OS=${{ matrix.ios-version }}'
       working-directory: QuintKit
 
   tvos:
@@ -60,10 +50,10 @@ jobs:
       with:
         xcode-version: 15
     - name: Build (tvOS)
-      run: xcodebuild build -scheme QuintKit -sdk appletvos -destination 'generic/platform=tvOS'
+      run: xcodebuild build -scheme QuintKit-Package -sdk appletvos -destination 'generic/platform=tvOS'
       working-directory: QuintKit
     - name: Test (tvOS)
-      run: xcodebuild test -scheme QuintKitTests -sdk appletvos -destination 'platform=tvOS Simulator,name=Apple TV'
+      run: xcodebuild test -scheme QuintKit-Package -sdk appletvos -destination 'platform=tvOS Simulator,name=Apple TV'
       working-directory: QuintKit
 
   watchos:
@@ -75,6 +65,6 @@ jobs:
       with:
         xcode-version: 15
     - name: Build (watchOS)
-      run: xcodebuild build -scheme QuintKit -sdk watchos -destination 'generic/platform=watchOS'
+      run: xcodebuild build -scheme QuintKit-Package -sdk watchos -destination 'generic/platform=watchOS'
       working-directory: QuintKit
     # Tests are not supported on watchOS
