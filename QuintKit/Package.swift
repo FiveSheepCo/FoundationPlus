@@ -7,19 +7,22 @@ let package = Package(
     name: "QuintKit",
     platforms: [
         .iOS(.v13),
-        .macOS(.v10_15)
+        .tvOS(.v13),
+        .watchOS(.v6),
+        .macOS(.v10_15),
     ],
     products: [
+        
         // The full QuintKit package with all modules included.
         .library(
             name: "QuintKit",
-            targets: ["QuintKitCore", "QuintKitAlerting", "QuintKitNetworking", "QuintKitUI"]
+            targets: ["QuintKit"]
         ),
         
         // The full QuintKit package with all modules and SchafKit shim included.
         .library(
             name: "QuintSchafKit",
-            targets: ["QuintKitCore", "QuintKitAlerting", "QuintKitNetworking", "QuintKitUI", "SchafKitShim"]
+            targets: ["QuintKit", "SchafKitShim"]
         ),
         
         // Core module.
@@ -61,13 +64,28 @@ let package = Package(
         )
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
+        
+        // QuintKit modules
         .target(name: "QuintKitCore"),
         .target(name: "QuintKitAlerting", dependencies: ["QuintKitCore"]),
         .target(name: "QuintKitNetworking", dependencies: ["QuintKitCore"]),
         .target(name: "QuintKitUI", dependencies: ["QuintKitCore"]),
+        
+        // QuintKit target with all module dependencies
+        .target(
+            name: "QuintKit",
+            dependencies: [
+                "QuintKitCore",
+                "QuintKitAlerting",
+                "QuintKitNetworking",
+                "QuintKitUI"
+            ]
+        ),
+        
+        // SchafKit shim
         .target(name: "SchafKitShim", dependencies: ["QuintKitCore"]),
+        
+        // Tests
         .testTarget(
             name: "QuintKitTests",
             dependencies: [
