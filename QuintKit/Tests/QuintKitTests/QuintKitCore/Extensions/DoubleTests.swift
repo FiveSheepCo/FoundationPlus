@@ -5,7 +5,7 @@ import XCTest
 
 final class Core__DoubleTests: XCTestCase {
     let en_US = {
-        if #available(iOS 16.0, *) {
+        if #available(iOS 16.0, tvOS 16.0, watchOS 9.0, *) {
             Locale(languageCode: .english)
         } else {
             Locale(identifier: "en_US")
@@ -13,7 +13,7 @@ final class Core__DoubleTests: XCTestCase {
     }()
     
     let de_DE = {
-        if #available(iOS 16.0, *) {
+        if #available(iOS 16.0, tvOS 16.0, watchOS 9.0, *) {
             Locale(languageCode: .german)
         } else {
             Locale(identifier: "de_DE")

@@ -39,7 +39,7 @@ extension DictationTextFieldConfiguration {
 
 /// A `TextField` with text dictation capabilities.
 /// Supports live preview of dictated text.
-@available(macOS 12.0, iOS 15.0, *)
+@available(macOS 12.0, iOS 15.0, tvOS 16.0, watchOS 8.0, *)
 public struct DictationTextField: View {
     
     /// Speech recognizer.
@@ -163,7 +163,7 @@ public struct DictationTextField: View {
             VStack {
                 if isTranscribing {
                     Group {
-                        if #available(iOS 17.0, macOS 14.0, *) {
+                        if #available(iOS 17.0, tvOS 17.0, macOS 14.0, watchOS 10.0, *) {
                             Image(systemName: "waveform.badge.mic")
                                 .symbolRenderingMode(.palette)
                                 .symbolEffect(.variableColor.iterative.dimInactiveLayers.nonReversing)
@@ -191,6 +191,7 @@ public struct DictationTextField: View {
                 toggleTranscription()
             }
             
+            #if !os(tvOS)
             // Handle press-and-hold recording
             .simultaneousGesture(
                 LongPressGesture(minimumDuration: 0.25, maximumDistance: 64)
@@ -216,6 +217,7 @@ public struct DictationTextField: View {
                         }
                     )
             )
+            #endif
         } // End of HStack
         
         // React to changes of the transcribed text, even after the transcription is halted.
@@ -228,7 +230,7 @@ public struct DictationTextField: View {
 }
 
 #Preview {
-    if #available(macOS 12.0, iOS 15.0, *) {
+    if #available(macOS 12.0, iOS 15.0, tvOS 16.0, watchOS 8.0, *) {
         DictationTextField("Foo", text: .constant("Bar"))
     } else {
         EmptyView()

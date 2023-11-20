@@ -7,7 +7,7 @@ import AVFoundation
 import Speech
 
 /// A helper for transcribing speech to text using SFSpeechRecognizer and AVAudioEngine.
-@available(iOS 14.0, *)
+@available(iOS 14.0, tvOS 14.0, *)
 actor SpeechRecognizer: ObservableObject {
     enum RecognizerError: Error {
         case nilRecognizer
@@ -187,9 +187,9 @@ extension AVAudioSession {
     }
 }
 
-#elseif os(macOS)
+#else
 
-// TODO: This is a stub on macOS.
+// TODO: This is a stub on unsupported platforms.
 actor SpeechRecognizer: ObservableObject {
     @MainActor
     @Published

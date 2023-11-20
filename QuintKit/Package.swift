@@ -83,7 +83,7 @@ let package = Package(
         ),
         
         // SchafKit shim
-        .target(name: "SchafKitShim", dependencies: ["QuintKitCore"]),
+        .target(name: "SchafKitShim", dependencies: ["QuintKitCore", "QuintKitUI"]),
         
         // Tests
         .testTarget(
