@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  macos:
     runs-on: macos-13
     steps:
     - uses: actions/checkout@v3
@@ -18,7 +18,49 @@ jobs:
       uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: 15
-    - name: Build
+    - name: Build (macOS)
       run: swift build -v --package-path QuintKit
-    - name: Run tests
+    - name: Test (macOS)
       run: swift test -v --package-path QuintKit
+  
+  ios:
+    runs-on: macos-13
+    strategy:
+      matrix:
+        ios-version: ['13.0', '14.0', '15.0', '16.0', '17.0']
+        device: ['iPhone 11', 'iPhone 12', 'iPhone 13', 'iPhone 14', 'iPhone 15']
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Xcode 15
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: 15
+    - name: Build (iOS)
+      run: xcodebuild build -scheme QuintKit -sdk iphoneos -destination 'generic/platform=iOS,OS=${{ matrix.ios-version }}'
+    - name: Test (iOS)
+      run: xcodebuild test -scheme QuintKitTests -sdk iphoneos -destination 'platform=iOS Simulator,OS=${{ matrix.ios-version }},name=${{ matrix.device }}'
+
+  tvos:
+    runs-on: macos-13
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Xcode 15
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: 15
+    - name: Build (tvOS)
+      run: xcodebuild build -scheme QuintKit -sdk appletvos -destination 'generic/platform=tvOS'
+    - name: Test (tvOS)
+      run: xcodebuild test -scheme QuintKit -sdk appletvos -destination 'platform=tvOS Simulator,name=Apple TV'
+
+  watchos:
+    runs-on: macos-13
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Xcode 15
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: 15
+    - name: Build (watchOS)
+      run: xcodebuild build -scheme QuintKit -sdk watchos -destination 'generic/platform=watchOS'
+    # Tests are not supported on watchOS
