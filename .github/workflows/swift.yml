@@ -51,7 +51,7 @@ jobs:
     - name: Build (tvOS)
       run: xcodebuild build -scheme QuintKit -sdk appletvos -destination 'generic/platform=tvOS'
     - name: Test (tvOS)
-      run: xcodebuild test -scheme QuintKit -sdk appletvos -destination 'platform=tvOS Simulator,name=Apple TV'
+      run: xcodebuild test -scheme QuintKitTests -sdk appletvos -destination 'platform=tvOS Simulator,name=Apple TV'
 
   watchos:
     runs-on: macos-13
