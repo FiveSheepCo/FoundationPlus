@@ -46,8 +46,10 @@ jobs:
         xcode-version: 15
     - name: Build (iOS)
       run: xcodebuild build -scheme QuintKit -sdk iphoneos -destination 'generic/platform=iOS,OS=${{ matrix.ios-version }}'
+      working-directory: QuintKit
     - name: Test (iOS)
       run: xcodebuild test -scheme QuintKitTests -sdk iphoneos -destination 'platform=iOS Simulator,OS=${{ matrix.ios-version }},name=${{ matrix.device }}'
+      working-directory: QuintKit
 
   tvos:
     runs-on: macos-13
@@ -59,8 +61,10 @@ jobs:
         xcode-version: 15
     - name: Build (tvOS)
       run: xcodebuild build -scheme QuintKit -sdk appletvos -destination 'generic/platform=tvOS'
+      working-directory: QuintKit
     - name: Test (tvOS)
       run: xcodebuild test -scheme QuintKitTests -sdk appletvos -destination 'platform=tvOS Simulator,name=Apple TV'
+      working-directory: QuintKit
 
   watchos:
     runs-on: macos-13
@@ -72,4 +76,5 @@ jobs:
         xcode-version: 15
     - name: Build (watchOS)
       run: xcodebuild build -scheme QuintKit -sdk watchos -destination 'generic/platform=watchOS'
+      working-directory: QuintKit
     # Tests are not supported on watchOS
