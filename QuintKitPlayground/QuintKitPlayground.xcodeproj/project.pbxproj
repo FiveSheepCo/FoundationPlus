@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		CA004F1B2B066164004002C2 /* QuintKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA004F1A2B066164004002C2 /* QuintKit */; };
-		CA004F1D2B066164004002C2 /* QuintKit/Alerting in Frameworks */ = {isa = PBXBuildFile; productRef = CA004F1C2B066164004002C2 /* QuintKit/Alerting */; };
-		CA004F1F2B066164004002C2 /* QuintKit/Core in Frameworks */ = {isa = PBXBuildFile; productRef = CA004F1E2B066164004002C2 /* QuintKit/Core */; };
-		CA004F212B066164004002C2 /* QuintKit/Networking in Frameworks */ = {isa = PBXBuildFile; productRef = CA004F202B066164004002C2 /* QuintKit/Networking */; };
-		CA004F232B066164004002C2 /* QuintKit/UI in Frameworks */ = {isa = PBXBuildFile; productRef = CA004F222B066164004002C2 /* QuintKit/UI */; };
 		CA004F262B06618A004002C2 /* QuintKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA004F252B06618A004002C2 /* QuintKit */; };
+		CA05484C2B0840E500FE8B40 /* QuintKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA05484B2B0840E500FE8B40 /* QuintKit */; };
 		CA059D912B065E5D00BAA837 /* QuintKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA059D902B065E5D00BAA837 /* QuintKit */; };
 		CA6CA36D2B05C254003E65BA /* QuintKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA6CA36C2B05C254003E65BA /* QuintKit */; };
 		CA6CA36F2B05C27E003E65BA /* QuintKit in Resources */ = {isa = PBXBuildFile; fileRef = CA6CA36E2B05C27E003E65BA /* QuintKit */; };
+		CA7785752B0F6B2500E8B6CD /* QuintKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA7785742B0F6B2500E8B6CD /* QuintKit */; };
 		CAB89B232B059691005C646A /* QuintKitPlaygroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB89B222B059691005C646A /* QuintKitPlaygroundApp.swift */; };
 		CAB89B252B059691005C646A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB89B242B059691005C646A /* ContentView.swift */; };
 		CAB89B272B059692005C646A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB89B262B059692005C646A /* Assets.xcassets */; };
@@ -40,15 +38,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA004F1F2B066164004002C2 /* QuintKit/Core in Frameworks */,
-				CA004F232B066164004002C2 /* QuintKit/UI in Frameworks */,
-				CA004F212B066164004002C2 /* QuintKit/Networking in Frameworks */,
 				CAB89B352B059705005C646A /* QuintKit in Frameworks */,
 				CA004F1B2B066164004002C2 /* QuintKit in Frameworks */,
 				CA004F262B06618A004002C2 /* QuintKit in Frameworks */,
 				CA6CA36D2B05C254003E65BA /* QuintKit in Frameworks */,
+				CA05484C2B0840E500FE8B40 /* QuintKit in Frameworks */,
 				CA059D912B065E5D00BAA837 /* QuintKit in Frameworks */,
-				CA004F1D2B066164004002C2 /* QuintKit/Alerting in Frameworks */,
+				CA7785752B0F6B2500E8B6CD /* QuintKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,11 +110,9 @@
 				CA6CA36C2B05C254003E65BA /* QuintKit */,
 				CA059D902B065E5D00BAA837 /* QuintKit */,
 				CA004F1A2B066164004002C2 /* QuintKit */,
-				CA004F1C2B066164004002C2 /* QuintKit/Alerting */,
-				CA004F1E2B066164004002C2 /* QuintKit/Core */,
-				CA004F202B066164004002C2 /* QuintKit/Networking */,
-				CA004F222B066164004002C2 /* QuintKit/UI */,
 				CA004F252B06618A004002C2 /* QuintKit */,
+				CA05484B2B0840E500FE8B40 /* QuintKit */,
+				CA7785742B0F6B2500E8B6CD /* QuintKit */,
 			);
 			productName = QuintKitPlayground;
 			productReference = CAB89B1F2B059691005C646A /* QuintKitPlayground.app */;
@@ -149,7 +143,7 @@
 			);
 			mainGroup = CAB89B162B059691005C646A;
 			packageReferences = (
-				CA004F242B06618A004002C2 /* XCLocalSwiftPackageReference "../QuintKit" */,
+				CA7785732B0F6B2500E8B6CD /* XCLocalSwiftPackageReference "../QuintKit" */,
 			);
 			productRefGroup = CAB89B202B059691005C646A /* Products */;
 			projectDirPath = "";
@@ -411,7 +405,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		CA004F242B06618A004002C2 /* XCLocalSwiftPackageReference "../QuintKit" */ = {
+		CA7785732B0F6B2500E8B6CD /* XCLocalSwiftPackageReference "../QuintKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../QuintKit;
 		};
@@ -422,23 +416,11 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = QuintKit;
 		};
-		CA004F1C2B066164004002C2 /* QuintKit/Alerting */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = QuintKit/Alerting;
-		};
-		CA004F1E2B066164004002C2 /* QuintKit/Core */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = QuintKit/Core;
-		};
-		CA004F202B066164004002C2 /* QuintKit/Networking */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = QuintKit/Networking;
-		};
-		CA004F222B066164004002C2 /* QuintKit/UI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = QuintKit/UI;
-		};
 		CA004F252B06618A004002C2 /* QuintKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = QuintKit;
+		};
+		CA05484B2B0840E500FE8B40 /* QuintKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = QuintKit;
 		};
@@ -447,6 +429,10 @@
 			productName = QuintKit;
 		};
 		CA6CA36C2B05C254003E65BA /* QuintKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = QuintKit;
+		};
+		CA7785742B0F6B2500E8B6CD /* QuintKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = QuintKit;
 		};
