@@ -20,6 +20,13 @@ typealias CombinePublisher = Combine.Publisher
 /// In this example, `myProperty` will only trigger updates to any subscribers when the value actually changes.
 @propertyWrapper
 public struct EquatablePublished<Value: Equatable> {
+    private var publisher: Publisher?
+    private var storage: Storage
+    
+    private enum Storage {
+        case value(Value)
+        case publisher(Publisher)
+    }
 
     /// Creates an `EquatablePublished` instance with the provided initial value.
     /// - Parameter initialValue: The initial value to be assigned to the property.
@@ -31,52 +38,82 @@ public struct EquatablePublished<Value: Equatable> {
     /// Initializes the storage of the `EquatablePublished` property as well as the corresponding `Publisher`.
     /// - Parameter wrappedValue: The initial value of the `EquatablePublished` property.
     public init(wrappedValue: Value) {
-        value = wrappedValue
+        self.storage = .value(wrappedValue)
     }
-
-    /// A publisher for properties marked with the `@EquatablePublished` attribute.
-    public struct Publisher: CombinePublisher {
-
-        public typealias Output = Value
-
-        public typealias Failure = Never
-
-        public func receive<Downstream: Subscriber>(subscriber: Downstream)
-            where Downstream.Input == Value, Downstream.Failure == Never
-        {
-            subject.subscribe(subscriber)
+    
+    /// The property that can be accessed with the `$` syntax and allows access to
+    /// the `Publisher`
+    public var projectedValue: Publisher {
+        mutating get {
+            switch storage {
+                case .value(let value):
+                    let publisher = Publisher(value)
+                    storage = .publisher(publisher)
+                    return publisher
+                case .publisher(let publisher):
+                    return publisher
+            }
         }
-
-        fileprivate let subject: CurrentValueSubject<Value, Never>
-
-        fileprivate init(_ output: Output) {
-            subject = .init(output)
+        set {
+            switch storage {
+                case .value(let value):
+                    storage = .publisher(Publisher(value))
+                case .publisher:
+                    break
+            }
         }
     }
-
-    private var value: Value
-
-    // swiftlint:disable let_var_whitespace
+    
     @available(*, unavailable, message: "@Published is only available on properties of classes")
     public var wrappedValue: Value {
         get { fatalError() }
-        set { fatalError() } // swiftlint:disable:this unused_setter_value
+        set { fatalError() }
     }
     
-    // swiftlint:enable let_var_whitespace
     public static subscript<EnclosingSelf: ObservableObject>(
         _enclosingInstance object: EnclosingSelf,
         wrapped wrappedKeyPath: ReferenceWritableKeyPath<EnclosingSelf, Value>,
         storage storageKeyPath: ReferenceWritableKeyPath<EnclosingSelf, EquatablePublished<Value>>
     ) -> Value {
         get {
-            return object[keyPath: storageKeyPath].value
+            switch object[keyPath: storageKeyPath].storage {
+                case .value(let value):
+                    value
+                case .publisher(let publisher):
+                    publisher.subject.value
+            }
         }
         set {
-            guard object[keyPath: storageKeyPath].value != newValue else { return }
-            
+            switch object[keyPath: storageKeyPath].storage {
+                case .value(let value):
+                    if value == newValue { return }
+                    object[keyPath: storageKeyPath].storage = .publisher(Publisher(newValue))
+                case .publisher(let publisher):
+                    if publisher.subject.value == newValue { return }
+                    publisher.subject.value = newValue
+            }
             (object.objectWillChange as! ObservableObjectPublisher).send()
-            object[keyPath: storageKeyPath].value = newValue
+        }
+    }
+}
+
+extension EquatablePublished {
+    
+    /// A publisher for properties marked with the `@EquatablePublished` attribute.
+    public struct Publisher: CombinePublisher {
+        public typealias Output = Value
+        public typealias Failure = Never
+        
+        fileprivate let subject: CurrentValueSubject<Value, Never>
+
+        fileprivate init(_ output: Output) {
+            subject = .init(output)
+        }
+
+        public func receive<Downstream: Subscriber>(subscriber: Downstream)
+            where Downstream.Input == Value, Downstream.Failure == Never
+        {
+            subject.subscribe(subscriber)
         }
     }
 }
