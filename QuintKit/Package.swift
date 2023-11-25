@@ -91,6 +91,12 @@ let package = Package(
             dependencies: [
                 "QuintKit",
                 "SchafKitShim"
+            ],
+            linkerSettings: [
+                .linkedFramework(
+                    "XCTest",
+                    .when(platforms: [.macOS, .iOS, .tvOS, .watchOS])
+                )
             ]
         ),
     ]
