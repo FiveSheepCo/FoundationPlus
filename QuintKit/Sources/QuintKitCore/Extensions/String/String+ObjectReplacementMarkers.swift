@@ -1,6 +1,7 @@
 import Foundation
 
 public extension String {
+    
     /// Returns a new `String` without Unicode Object Replacement Markers (`0xfffc`).
     ///
     /// **Context**
