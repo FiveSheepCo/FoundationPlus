@@ -19,9 +19,9 @@ jobs:
       with:
         xcode-version: 15
     - name: Build (macOS)
-      run: swift build -v --package-path $PACKAGE
+      run: swift build -v --package-path .
     - name: Test (macOS)
-      run: swift test -v --package-path $PACKAGE
+      run: swift test -v --package-path .
 
   ios:
     runs-on: macos-13
