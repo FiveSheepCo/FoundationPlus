@@ -25,15 +25,6 @@ jobs:
 
   ios:
     runs-on: macos-13
-    strategy:
-      matrix:
-        include:
-          # - ios-version: '13.0'
-          #   device: 'iPhone 11'
-          # - ios-version: '15.0'
-          #   device: 'iPhone 13'
-          - ios-version: '17.0'
-            device: 'iPhone 15'
     steps:
     - uses: actions/checkout@v3
     - name: Setup Xcode 15
