@@ -97,10 +97,10 @@ public struct EquatablePublished<Value: Equatable> {
     }
 }
 
-extension EquatablePublished {
+public extension EquatablePublished {
     
     /// A publisher for properties marked with the `@EquatablePublished` attribute.
-    public struct Publisher: CombinePublisher {
+    struct Publisher: CombinePublisher {
         public typealias Output = Value
         public typealias Failure = Never
         
