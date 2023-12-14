@@ -22,7 +22,7 @@ jobs:
       run: swift build -v --package-path QuintKit
     - name: Test (macOS)
       run: swift test -v --package-path QuintKit
-  
+
   ios:
     runs-on: macos-13
     strategy:
@@ -41,11 +41,35 @@ jobs:
       with:
         xcode-version: 15
     - name: Build (iOS)
-      run: xcodebuild build -scheme QuintKit-Package -sdk iphoneos -destination 'generic/platform=iOS,OS=${{ matrix.ios-version }},Name=${{ matrix.device }}'
+      run: xcodebuild build -scheme QuintKit-Package -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15'
       working-directory: QuintKit
     - name: Test (iOS)
-      run: xcodebuild test -scheme QuintKit-Package -sdk iphoneos -destination 'platform=iOS Simulator,OS=${{ matrix.ios-version }},Name=${{ matrix.device }}'
+      run: xcodebuild test -scheme QuintKit-Package -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15'
       working-directory: QuintKit
+  
+  # ios:
+  #   runs-on: macos-13
+  #   strategy:
+  #     matrix:
+  #       include:
+  #         # - ios-version: '13.0'
+  #         #   device: 'iPhone 11'
+  #         # - ios-version: '15.0'
+  #         #   device: 'iPhone 13'
+  #         - ios-version: '17.0'
+  #           device: 'iPhone 15'
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - name: Setup Xcode 15
+  #     uses: maxim-lobanov/setup-xcode@v1
+  #     with:
+  #       xcode-version: 15
+  #   - name: Build (iOS)
+  #     run: xcodebuild build -scheme QuintKit-Package -sdk iphoneos -destination 'generic/platform=iOS,OS=${{ matrix.ios-version }},Name=${{ matrix.device }}'
+  #     working-directory: QuintKit
+  #   - name: Test (iOS)
+  #     run: xcodebuild test -scheme QuintKit-Package -sdk iphoneos -destination 'platform=iOS Simulator,OS=${{ matrix.ios-version }},Name=${{ matrix.device }}'
+  #     working-directory: QuintKit
 
   # tvos:
   #   runs-on: macos-13
