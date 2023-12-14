@@ -29,7 +29,7 @@ And much more, with continuous additions and updates to enhance your Swift devel
 You can easily integrate **FoundationPlus** into your Swift project using Swift Package Manager. Here's how:
 
 1. In Xcode, select "File" > "Swift Packages" > "Add Package Dependency..."
-2. Enter the repository URL: `https://github.com/FiveSheep/FoundationPlus.git`
+2. Enter the repository URL: `https://github.com/FiveSheepCo/FoundationPlus.git`
 3. Follow the on-screen instructions to complete the installation.
 
 ## Usage
@@ -42,6 +42,11 @@ import FoundationPlus
 
 Then, you can directly access the new features and enhancements provided by the package.
 
+## Related Packages
+
+Also check out our other Swift packages:
+- [SwiftUIElements]: SwiftUI components, extensions, and utilities for painless UI development.
+
 ## Contributions
 
 We're always looking for ways to improve **FoundationPlus** and we welcome contributions. Whether it's a bug report, a
@@ -50,3 +55,8 @@ feature request, or a pull request, your input is invaluable to us.
 ## License
 
 **FoundationPlus** is available under the MIT license. See the [LICENSE](LICENSE.md) file for more info.
+
+<!-- Links -->
+
+[FoundationPlus]: https://github.com/FiveSheepCo/FoundationPlus
+[SwiftUIElements]: https://github.com/FiveSheepCo/SwiftUIElements

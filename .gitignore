@@ -1,11 +1,9 @@
+
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-# Fucking resolved package files
-Package.resolved
-MyKeyboard.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
-
+## Thumbnails
 .DS_Store
 
 ## User settings
@@ -52,6 +50,8 @@ playground.xcworkspace
 # hence it is not needed unless you have added a package configuration file to your project
 # .swiftpm
 
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .build/
 
 # CocoaPods
