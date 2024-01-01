@@ -17,4 +17,16 @@ final class Core__CollectionTests: XCTestCase {
         ({ let next = iterator.next(); XCTAssertEqual(next?.index, 2); XCTAssertEqual(next?.element, 3); })()
         XCTAssertNil(iterator.next())
     }
+    
+    func testIfExistsSubscript() throws {
+        let subject = [1, 2, 3]
+        
+        XCTAssertEqual(subject[ifExists: 1], 2)
+        XCTAssertNil(subject[ifExists: 3])
+    }
+    
+    func testNilIfEmpty() throws {
+        XCTAssertNil([].nilIfEmpty)
+        XCTAssertNotNil([0].nilIfEmpty)
+    }
 }
