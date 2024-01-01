@@ -34,7 +34,14 @@ public extension Calendar {
     /// - Note: If ``firstOfMonth(_:)`` fails, this will fail too.
     func lastOfMonth(_ date: Date) -> Date? {
         guard let date = self.firstOfMonth(date) else { return nil }
-        guard let date = self.date(byAdding: DateComponents(month: 1, day: -1), to: date) else { return nil }
+        guard let date = self.date(byAdding: DateComponents(month: 1), to: date) else { return nil }
+        guard let date = self.date(byAdding: DateComponents(day: -1), to: date) else { return nil }
         return self.startOfDay(for: date)
+    }
+    
+    /// Calculates the last moment of a given `Date`.
+    func endOfDay(_ date: Date) -> Date? {
+        guard let nextDay = self.date(byAdding: .day, value: 1, to: date) else { return nil }
+        return self.date(byAdding: .second, value: -1, to: self.startOfDay(for: nextDay))
     }
 }
