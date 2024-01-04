@@ -2,7 +2,7 @@ import XCTest
 
 @testable import FoundationPlus
 
-final class Core__DateFormatterTests: XCTestCase {
+final class DateFormatterTests: XCTestCase {
     
     func testConvenienceInit() throws {
         XCTAssertEqual(DateFormatter(dateStyle: .full).dateStyle, .full)

@@ -2,7 +2,7 @@ import XCTest
 
 @testable import FoundationPlus
 
-final class Core__TimeIntervalTests: XCTestCase {
+final class TimeIntervalTests: XCTestCase {
     
     func testSubUnits() throws {
         let subject: TimeInterval = 432000 // 5 days

@@ -2,7 +2,7 @@ import XCTest
 
 @testable import FoundationPlus
 
-final class Core__CharacterTests: XCTestCase {
+final class CharacterTests: XCTestCase {
     
     func testControlCharacters() throws {
         XCTAssertEqual(Character.space, " ")

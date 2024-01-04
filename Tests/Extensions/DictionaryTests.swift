@@ -2,7 +2,7 @@ import XCTest
 
 @testable import FoundationPlus
 
-final class Core__DictionaryTests: XCTestCase {
+final class DictionaryTests: XCTestCase {
     
     func testPlusOperator() {
         let a = ["a": 1, "b": 2]

@@ -2,7 +2,7 @@ import XCTest
 
 @testable import FoundationPlus
 
-final class Core__CollectionTests: XCTestCase {
+final class CollectionTests: XCTestCase {
     
     func testIndexedArray() throws {
         let subject = [1, 2, 3]

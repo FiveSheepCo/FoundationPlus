@@ -2,7 +2,7 @@ import XCTest
 
 @testable import FoundationPlus
 
-final class Core__DoubleTests: XCTestCase {
+final class DoubleTests: XCTestCase {
     let en_US = {
         if #available(iOS 16.0, tvOS 16.0, watchOS 9.0, *) {
             Locale(languageCode: .english)

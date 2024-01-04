@@ -2,7 +2,7 @@ import XCTest
 
 @testable import FoundationPlus
 
-final class Core__CalendarTests: XCTestCase {
+final class CalendarTests: XCTestCase {
     
     var calendar: Calendar {
         var calendar = Calendar(identifier: .gregorian)

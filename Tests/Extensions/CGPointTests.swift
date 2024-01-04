@@ -5,7 +5,7 @@ import CoreGraphics
 
 @testable import FoundationPlus
 
-final class Core__CGPointTests: XCTestCase {
+final class CGPointTests: XCTestCase {
 
     func testDistanceCalculation() {
         // Define two points

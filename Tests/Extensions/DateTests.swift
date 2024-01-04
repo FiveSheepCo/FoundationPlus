@@ -2,7 +2,7 @@ import XCTest
 
 @testable import FoundationPlus
 
-final class Core__DateTests: XCTestCase {
+final class DateTests: XCTestCase {
     
     // Honestly, I'm not sure how to implement the tests here.
     // TimeIntervalUntilNow always operates on the `now` date,

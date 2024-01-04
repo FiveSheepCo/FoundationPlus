@@ -2,7 +2,7 @@ import XCTest
 
 @testable import FoundationPlus
 
-final class Core__BoolTests: XCTestCase {
+final class BoolTests: XCTestCase {
     
     func testNegation() throws {
         XCTAssertTrue(false.negated)
