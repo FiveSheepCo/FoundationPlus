@@ -56,4 +56,10 @@ final class ArrayTests: XCTestCase {
         subject.removeAll(subject: 5)
         XCTAssertEqual(subject, [1, 2, 3, 4, 6, 7, 8, 9])
     }
+    
+    func testSortedByKeyPath() {
+        let subject = [1, 3, 2, 4, 6, 5, 8, 7, 9, 0]
+        
+        XCTAssertEqual(subject.sorted(by: \.self), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+    }
 }
