@@ -7,6 +7,14 @@ import Foundation
 
 public extension Array where Element: Equatable {
     
+    /// Modifies the array in place, removing all instances of the subject.
+    ///
+    /// - Parameter subject: The element to remove from the array.
+    @available(*, deprecated, renamed: "removeAll", message: "Use `removeAll(subject:)` instead.")
+    mutating func remove(subject: Element) {
+        self.removeAll(subject: subject)
+    }
+    
     /// Modifies the array in place, removing all occurrences of the specified element.
     ///
     /// - Parameter subject: The element to remove from the array.
@@ -20,8 +28,6 @@ public extension Array where Element: Equatable {
 public extension Array where Element: Hashable {
     
     /// Modifies the array in place, removing all duplicate elements.
-    ///
-    /// This mutating method removes all duplicate elements from the array.
     mutating func removeDuplicates() {
         self = removingDuplicates()
     }

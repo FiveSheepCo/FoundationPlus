@@ -14,6 +14,15 @@ public extension Array where Element: Equatable {
     func removingAll(subject: Element) -> [Element] {
         self.filter { $0 != subject }
     }
+    
+    /// Returns a new array with all occurrences of the specified element removed.
+    ///
+    /// - Parameter subject: The element to remove from the array.
+    /// - Returns: A new array containing all elements of the original array except for those equal to `subject`.
+    @available(*, deprecated, renamed: "removeAll", message: "Use `removingAll(subject:)` instead.")
+    func removing(subject: Element) -> [Element] {
+        self.removingAll(subject: subject)
+    }
 }
 
 public extension Array where Element: Hashable {
