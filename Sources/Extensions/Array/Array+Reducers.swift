@@ -74,3 +74,17 @@ public extension Array where Element: Comparable & SignedNumeric {
         return Swift.max(abs(min), abs(max))
     }
 }
+
+public extension Array where Element: Equatable {
+    
+    func ends(with suffix: Array) -> Bool {
+        let count = self.count
+        let startIndex = count - suffix.count
+        
+        guard startIndex >= 0 else {
+            return false
+        }
+        
+        return Array(self[startIndex..<count]) == suffix
+    }
+}

@@ -62,4 +62,16 @@ final class ArrayTests: XCTestCase {
         
         XCTAssertEqual(subject.sorted(by: \.self), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
     }
+    
+    func testEndsWith() {
+        let subject = [1, 2, 3, 4, 5]
+        
+        XCTAssertTrue(subject.ends(with: []))
+        XCTAssertTrue(subject.ends(with: [5]))
+        XCTAssertTrue(subject.ends(with: [4, 5]))
+        XCTAssertTrue(subject.ends(with: [3, 4, 5]))
+        XCTAssertTrue(subject.ends(with: subject))
+        
+        XCTAssertFalse(subject.ends(with: [3, 4]))
+    }
 }
