@@ -5,6 +5,21 @@
 
 import Foundation
 
+public extension Array {
+    
+    /// Modifies the array in place, removing and returning its first element, if it exists.
+    mutating func removeFirstIfExists() -> Element? {
+        if self.isEmpty { nil }
+        else { self.removeFirst() }
+    }
+    
+    /// Modifies the array in place, removing and returning its last element, if it exists.
+    mutating func removeLastIfExists() -> Element? {
+        if self.isEmpty { nil }
+        else { self.removeLast() }
+    }
+}
+
 public extension Array where Element: Equatable {
     
     /// Modifies the array in place, removing all instances of the subject.

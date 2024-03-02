@@ -74,4 +74,11 @@ final class ArrayTests: XCTestCase {
         
         XCTAssertFalse(subject.ends(with: [3, 4]))
     }
+    
+    func removeFirstIfExists() {
+        var subject = [1, 2, 3, 4, 5]
+        
+        XCTAssertEqual(subject.removeFirstIfExists(), 1)
+        XCTAssertEqual(subject, [2, 3, 4, 5])
+    }
 }
