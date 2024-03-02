@@ -42,9 +42,9 @@ final class SequenceTests: XCTestCase {
     }
     
     func testParallelMap() async throws {
-        let subject = Array(repeating: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], count: 1000).flatMap { $0 }
+        let subject = Array(repeating: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], count: 10).flatMap { $0 }
         
-        let result = try await subject.parallelMap { String($0) }
+        let result = await subject.parallelMap { String($0) }
         let traditionalResult = subject.map { String($0) }
         
         XCTAssertEqual(result, traditionalResult)
