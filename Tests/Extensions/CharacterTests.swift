@@ -13,4 +13,14 @@ final class CharacterTests: XCTestCase {
     func testToString() throws {
         XCTAssertEqual(Character.space.toString, String(" "))
     }
+    
+    func lowercased() throws {
+        XCTAssertEqual(Character("a").lowercased, "a")
+        XCTAssertEqual(Character("A").lowercased, "a")
+    }
+    
+    func uppercased() throws {
+        XCTAssertEqual(Character("a").lowercased, "A")
+        XCTAssertEqual(Character("A").lowercased, "A")
+    }
 }
