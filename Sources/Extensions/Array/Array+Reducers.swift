@@ -34,6 +34,20 @@ public extension Array {
         }
         return true
     }
+    
+    ///
+    /// Checks if the collection contains the specified object by reference.
+    ///
+    /// - Parameter object: The object to search for in the collection.
+    /// - Returns: `true` if the collection contains the object, `false` otherwise.
+    /// - Note: This method compares objects by reference, not by value.
+    func contains(exactObject object: Element) -> Bool {
+        let erasedObject = object as AnyObject?
+        for e in self where e as AnyObject? === erasedObject {
+            return true
+        }
+        return false
+    }
 }
 
 public extension Array where Element: Comparable {
@@ -77,6 +91,18 @@ public extension Array where Element: Comparable & SignedNumeric {
 
 public extension Array where Element: Equatable {
     
+    /// Checks if the array ends with the specified suffix.
+    ///
+    /// - Parameter suffix: An array of the same element type to check as the suffix.
+    /// - Returns: `true` if the array ends with the specified suffix, `false` otherwise.
+    ///
+    /// This function compares the elements of the suffix with the elements at the end of the array to determine if they match.
+    ///
+    /// Example:
+    /// ```swift
+    /// let array = [1, 2, 3, 4, 5]
+    /// print(array.ends(with: [4, 5])) // Prints "true"
+    /// ```
     func ends(with suffix: Array) -> Bool {
         let count = self.count
         let startIndex = count - suffix.count

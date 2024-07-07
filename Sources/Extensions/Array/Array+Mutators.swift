@@ -18,6 +18,20 @@ public extension Array {
         if self.isEmpty { nil }
         else { self.removeLast() }
     }
+    
+    /// Removes the specified object from the collection by reference.
+    ///
+    /// - Parameter object: The object to be removed from the collection.
+    /// - Note: This method compares objects by reference, not by value. If multiple instances of the object
+    ///   exist in the collection, all instances will be removed.
+    mutating func remove(exactObject object: Element) {
+        let erasedObject = object as AnyObject?
+        for i in (0..<self.count).reversed() {
+            if self[i] as AnyObject? === erasedObject {
+                self.remove(at: i)
+            }
+        }
+    }
 }
 
 public extension Array where Element: Equatable {

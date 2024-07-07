@@ -81,4 +81,61 @@ final class ArrayTests: XCTestCase {
         XCTAssertEqual(subject.removeFirstIfExists(), 1)
         XCTAssertEqual(subject, [2, 3, 4, 5])
     }
+    
+    func testContainsExactObject() {
+        class X: Equatable {
+            static func == (lhs: X, rhs: X) -> Bool {
+                true
+            }
+            init() {}
+        }
+        let a = X()
+        let b = X()
+        let c = X()
+        let subject = [a, b, c]
+        
+        XCTAssertTrue(subject.contains(exactObject: a))
+        XCTAssertTrue(subject.contains(exactObject: b))
+        XCTAssertTrue(subject.contains(exactObject: c))
+        XCTAssertFalse(subject.contains(exactObject: X()))
+    }
+    
+    func testRemoveExactObject() {
+        class X: Equatable {
+            static func == (lhs: X, rhs: X) -> Bool {
+                true
+            }
+            init() {}
+        }
+        let a = X()
+        let b = X()
+        let c = X()
+        
+        var subject = [a, b, c]
+        subject.remove(exactObject: b)
+        subject.remove(exactObject: X())
+        
+        XCTAssertTrue(subject.count == 2)
+        XCTAssertIdentical(subject[0], a)
+        XCTAssertIdentical(subject[1], c)
+    }
+    
+    func testRemovingExactObject() {
+        class X: Equatable {
+            static func == (lhs: X, rhs: X) -> Bool {
+                true
+            }
+            init() {}
+        }
+        let a = X()
+        let b = X()
+        let c = X()
+        
+        let subject = [a, b, c]
+        let newSubject = subject.removing(exactObject: b)
+        
+        XCTAssertTrue(newSubject.count == 2)
+        XCTAssertIdentical(newSubject[0], a)
+        XCTAssertIdentical(newSubject[1], c)
+    }
 }
