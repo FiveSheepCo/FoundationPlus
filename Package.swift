@@ -18,7 +18,10 @@ let package = Package(
         ),
     ],
     targets: [
-        .target(name: "FoundationPlus"),
+        .target(
+            name: "FoundationPlus",
+            resources: [.process("PrivacyInfo.xcprivacy")]
+        ),
         .testTarget(
             name: "FoundationPlusTests",
             dependencies: ["FoundationPlus"],
