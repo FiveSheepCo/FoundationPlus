@@ -25,9 +25,9 @@ final class DoubleTests: XCTestCase {
     }
     
     func testToFormattedString() throws {
-        XCTAssertEqual(10.0.toFormattedString(.natural), "10")
-        XCTAssertEqual(10.5.toFormattedString(.natural), "10.5")
-        XCTAssertEqual(10.123.toFormattedString(.natural), "10.12")
+        XCTAssertEqual(10.0.toFormattedString(.natural(locale: en_US)), "10")
+        XCTAssertEqual(10.5.toFormattedString(.natural(locale: en_US)), "10.5")
+        XCTAssertEqual(10.123.toFormattedString(.natural(locale: en_US)), "10.12")
         XCTAssertEqual(10.0.toFormattedString(.fixed(fractionalDigits: 2, locale: en_US)), "10.00")
         XCTAssertEqual(10.5.toFormattedString(.fixed(fractionalDigits: 2, locale: en_US)), "10.50")
         XCTAssertEqual(1000.toFormattedString(.fixed(fractionalDigits: 2, separatesThousands: true, locale: en_US)), "1,000.00")

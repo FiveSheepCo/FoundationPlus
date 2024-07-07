@@ -31,7 +31,7 @@ public extension Double {
         /// 1000    // becomes "1,000"      (using en_US locale)
         /// 1000.5  // becomes "1,000.5"    (using en_US locale)
         /// ```
-        case natural
+        case natural(locale: Locale = .autoupdatingCurrent)
         
         /// Advanced number formatting with a fixed amount of fractional digits.
         ///
@@ -72,11 +72,11 @@ public extension Double {
     func toFormattedString(_ style: Self.FormattingStyle) -> String {
         let formatter = NumberFormatter()
         switch style {
-            case .natural:
+            case .natural(let locale):
                 formatter.maximumFractionDigits = 2
                 formatter.usesGroupingSeparator = true
                 formatter.groupingSize = 3
-                formatter.locale = .autoupdatingCurrent
+                formatter.locale = locale
             case .fixed(let fractionalDigits, let separatesThousands, let locale):
                 formatter.minimumFractionDigits = fractionalDigits
                 formatter.maximumFractionDigits = fractionalDigits
