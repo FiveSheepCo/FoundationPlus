@@ -1,6 +1,6 @@
 import Foundation
 
-extension String: Swift.Identifiable {
+extension Swift.String: Swift.Identifiable {
     
     /// The `id` of the string is the string itself.
     public var id: Self {
