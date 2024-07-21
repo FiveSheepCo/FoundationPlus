@@ -1,6 +1,6 @@
 import Foundation
 
-extension String: @retroactive Identifiable {
+extension String: Swift.Identifiable {
     
     /// The `id` of the string is the string itself.
     public var id: Self {
