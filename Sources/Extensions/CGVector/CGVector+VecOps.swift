@@ -3,7 +3,7 @@
 import Foundation
 import CoreGraphics
 
-extension CGVector {
+public extension CGVector {
     
     /// Calculate the magnitude (or length) of the vector.
     ///

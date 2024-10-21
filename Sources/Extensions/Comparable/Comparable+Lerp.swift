@@ -1,6 +1,6 @@
 import Foundation
 
-extension Comparable where Self: ExpressibleByFloatLiteral & FloatingPoint {
+public extension Comparable where Self: ExpressibleByFloatLiteral & FloatingPoint {
     
     /// Linearly interpolate between `a` and `b` based on `t`.
     ///

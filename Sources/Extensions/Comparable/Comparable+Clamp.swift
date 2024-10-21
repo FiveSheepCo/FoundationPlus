@@ -1,6 +1,6 @@
 import Foundation
 
-extension Comparable {
+public extension Comparable {
     
     /// Clamps the receiver between `min` and `max`.
     ///
@@ -14,7 +14,7 @@ extension Comparable {
     }
 }
 
-extension Comparable where Self: ExpressibleByIntegerLiteral {
+public extension Comparable where Self: ExpressibleByIntegerLiteral {
     
     /// Clamps the receiver between `0` and `1`.
     @inline(__always)
