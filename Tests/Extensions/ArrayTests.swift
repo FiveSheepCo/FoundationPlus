@@ -17,7 +17,23 @@ final class ArrayTests: XCTestCase {
         XCTAssertTrue(subject.noneSatisfy { $0 % 2 == 0 })
         XCTAssertFalse(subject.noneSatisfy { $0 >= 0 })
     }
-    
+
+    func testMin() {
+        let subject = [-3, -5, 0, 4, 7]
+
+        let result = subject.min(byValue: \.self)
+
+        XCTAssertEqual(result, -5)
+    }
+
+    func testMax() {
+        let subject = [-5, -3, 7, 4, 0]
+
+        let result = subject.max(byValue: \.self)
+
+        XCTAssertEqual(result, 7)
+    }
+
     func testMinMax() {
         let subject = [-5, -3, 0, 4, 7]
         

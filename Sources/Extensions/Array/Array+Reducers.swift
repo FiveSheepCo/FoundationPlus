@@ -52,6 +52,20 @@ public extension Array {
 
 public extension Array where Element: Comparable {
 
+    /// Finds the minimum element in the array.
+    func min<T: Comparable>(byValue value: KeyPath<Element, T>) -> Element? {
+        self.min(by: {
+            $0[keyPath: value] < $1[keyPath: value]
+        })
+    }
+
+    /// Finds the maximum element in the array.
+    func max<T: Comparable>(byValue value: KeyPath<Element, T>) -> Element? {
+        self.max(by: {
+            $0[keyPath: value] < $1[keyPath: value]
+        })
+    }
+
     /// Finds the minimum and maximum elements in the array.
     ///
     /// This method traverses the array to find the smallest and largest elements. If the array is empty,
@@ -70,6 +84,29 @@ public extension Array where Element: Comparable {
             if e > max { max = e }
         }
         
+        return (min, max)
+    }
+
+    /// Finds the minimum and maximum elements in the array.
+    ///
+    /// This method traverses the array to find the smallest and largest elements. If the array is empty,
+    /// it returns `nil`. Otherwise, it returns a tuple containing the minimum and maximum elements.
+    ///
+    /// - Parameter value: A key path that specifies the property to compare.
+    /// - Returns: An optional tuple representing the minimum and maximum elements in the array, or `nil`
+    ///   if the array is empty.
+    func minmax<T: Comparable>(byValue value: KeyPath<Element, T>) -> (min: T, max: T)? {
+        guard let firstElement = self.first else { return nil }
+
+        var min: T = firstElement[keyPath: value]
+        var max: T = firstElement[keyPath: value]
+
+        for e in self.dropFirst() {
+            let value = e[keyPath: value]
+            if value < min { min = value }
+            if value > max { max = value }
+        }
+
         return (min, max)
     }
 }
