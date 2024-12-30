@@ -9,6 +9,7 @@ public extension Sequence {
     /// where the transformation is resource-intensive or involves asynchronous I/O operations.
     ///
     /// - Parameters:
+    ///   - preservingOrder: Whether the original order of elements should be preserved.
     ///   - transform: An asynchronous closure that takes an element of the sequence as its argument and
     ///     returns a transformed value of type `T`.
     /// - Returns: An array of transformed values `T`.
@@ -52,6 +53,7 @@ public extension Sequence {
     /// evaluation is resource-intensive or involves asynchronous I/O operations.
     ///
     /// - Parameters:
+    ///   - preservingOrder: Whether the original order of elements should be preserved.
     ///   - isIncluded: An asynchronous closure that takes an element of the sequence as its argument and
     ///     returns a Boolean value indicating whether the element should be included in the returned array.
     /// - Returns: An array of elements that satisfy the predicate `isIncluded`.

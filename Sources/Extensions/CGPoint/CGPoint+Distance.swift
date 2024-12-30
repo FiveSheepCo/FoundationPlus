@@ -10,7 +10,7 @@ public extension CGPoint {
     /// This method computes the Euclidean distance between the current point and another point.
     /// The distance is calculated using the Pythagorean theorem, ensuring accuracy in a 2D coordinate space.
     ///
-    /// - Parameter to: The `CGPoint` to which the distance is measured.
+    /// - Parameter point: The `CGPoint` to which the distance is measured.
     /// - Returns: The distance as a `CGFloat`.
     func distance(to point: CGPoint) -> CGFloat {
         let dx = self.x - point.x
@@ -23,7 +23,7 @@ public extension CGPoint {
     /// This method computes the Euclidean distance between the current point and the closest edge of a `CGRect`.
     /// The distance is calculated using the Pythagorean theorem, ensuring accuracy in a 2D coordinate space.
     ///
-    /// - Parameter to: The `CGRect` to which the distance is measured.
+    /// - Parameter rect: The `CGRect` to which the distance is measured.
     /// - Returns: The distance as a `CGFloat`.
     func distance(to rect: CGRect) -> CGFloat {
         let dx = max(rect.minX - self.x, 0, self.x - rect.maxX)

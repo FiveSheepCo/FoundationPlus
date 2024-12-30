@@ -42,7 +42,6 @@ public extension String {
     /// Removes all occurrences of the specified `string`, mutating the string.
     ///
     /// - Parameter string: The string to be removed from the string.
-    /// - Returns: A new string with all occurrences of `string` removed.
     mutating func removeOccurrences(of string: String) {
         self = removingOccurrences(of: string)
     }
@@ -50,7 +49,6 @@ public extension String {
     /// Removes all occurrences of the specified `string` from the start of the string, mutating the string.
     ///
     /// - Parameter string: The string to be removed from the start of the string.
-    /// - Returns: A new string with all occurrences of `string` removed from the start of the string.
     mutating func removeOccurrences(ofPrefix string: String) {
         self = removingOccurrences(ofPrefix: string)
     }
@@ -58,7 +56,6 @@ public extension String {
     /// Removes all occurrences of the specified `string` from the end of the string, mutating the string.
     ///
     /// - Parameter string: The string to be removed from the end of the string.
-    /// - Returns: A new string with all occurrences of `string` removed from the end of the string.
     mutating func removeOccurrences(ofSuffix string: String) {
         self = removingOccurrences(ofSuffix: string)
     }

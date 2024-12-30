@@ -32,8 +32,6 @@ public extension CGVector {
     
     /// Normalize the vector.
     /// The normalized vector points in the same direction but has a magnitude of 1.
-    ///
-    /// - Returns: A normalized vector.
     mutating func normalize() {
         self = self.normalized
     }
