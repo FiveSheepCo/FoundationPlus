@@ -51,7 +51,7 @@ public extension Array {
 }
 
 public extension Array where Element: Comparable {
-    
+
     /// Finds the minimum and maximum elements in the array.
     ///
     /// This method traverses the array to find the smallest and largest elements. If the array is empty,
@@ -90,7 +90,37 @@ public extension Array where Element: Comparable & SignedNumeric {
 }
 
 public extension Array where Element: Equatable {
-    
+
+    /// Checks if the array starts with the specified prefix.
+    ///
+    /// - Parameter prefix: An array of the same element type to check as the prefix.
+    /// - Returns: `true` if the array starts with the specified prefix, `false` otherwise.
+    ///
+    /// Example:
+    /// ```swift
+    /// let array = [1, 2, 3, 4, 5]
+    /// print(array.hasPrefix([1, 2])) // Prints "true"
+    /// ```
+    @inline(__always)
+    func hasPrefix(_ prefix: Self) -> Bool {
+        self.starts(with: prefix)
+    }
+
+    /// Checks if the array ends with the specified suffix.
+    ///
+    /// - Parameter suffix: An array of the same element type to check as the suffix.
+    /// - Returns: `true` if the array ends with the specified suffix, `false` otherwise.
+    ///
+    /// Example:
+    /// ```swift
+    /// let array = [1, 2, 3, 4, 5]
+    /// print(array.hasSuffix([4, 5])) // Prints "true"
+    /// ```
+    @inline(__always)
+    func hasSuffix(_ suffix: Self) -> Bool {
+        self.ends(with: suffix)
+    }
+
     /// Checks if the array ends with the specified suffix.
     ///
     /// - Parameter suffix: An array of the same element type to check as the suffix.
@@ -106,7 +136,7 @@ public extension Array where Element: Equatable {
     func ends(with suffix: Array) -> Bool {
         let count = self.count
         let startIndex = count - suffix.count
-        
+
         guard startIndex >= 0 else {
             return false
         }

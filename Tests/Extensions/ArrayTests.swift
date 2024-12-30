@@ -27,7 +27,33 @@ final class ArrayTests: XCTestCase {
         XCTAssertEqual(result?.min, -5)
         XCTAssertEqual(result?.max, 7)
     }
-    
+
+    func testMinMaxByValue() {
+        let subject = [-5, -3, 0, 4, 7]
+
+        let result = subject.minmax(byValue: \.magnitude)
+
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result?.min, 0)
+        XCTAssertEqual(result?.max, 7)
+    }
+
+    func testHasPrefix() {
+        let subject = [1, 2, 3, 4, 5]
+
+        XCTAssertTrue(subject.hasPrefix([]))
+        XCTAssertTrue(subject.hasPrefix([1, 2]))
+        XCTAssertTrue(subject.hasPrefix(subject))
+    }
+
+    func testHasSuffix() {
+        let subject = [1, 2, 3, 4, 5]
+
+        XCTAssertTrue(subject.hasSuffix([]))
+        XCTAssertTrue(subject.hasSuffix([4, 5]))
+        XCTAssertTrue(subject.hasSuffix(subject))
+    }
+
     func testGreatestMagnitude() {
         let subject = [-150, -70, -5, 0, 30, 120]
         
