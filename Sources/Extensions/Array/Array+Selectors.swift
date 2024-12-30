@@ -19,7 +19,7 @@ public extension Array where Element: Equatable {
     ///
     /// - Parameter subject: The element to remove from the array.
     /// - Returns: A new array containing all elements of the original array except for those equal to `subject`.
-    @available(*, deprecated, renamed: "removeAll", message: "Use `removingAll(subject:)` instead.")
+    @available(*, deprecated, renamed: "removingAll", message: "Use `removingAll(subject:)` instead.")
     func removing(subject: Element) -> [Element] {
         self.removingAll(subject: subject)
     }
