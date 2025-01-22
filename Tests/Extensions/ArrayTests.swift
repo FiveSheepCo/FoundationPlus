@@ -104,7 +104,22 @@ final class ArrayTests: XCTestCase {
         
         XCTAssertEqual(subject.sorted(by: \.self), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
     }
-    
+
+    func testSortedByKeyPath2() {
+        let subject = ["abd", "abz", "abc"]
+
+        XCTAssertEqual(subject.sorted(by: \.count, secondary: \.self), ["abc", "abd", "abz"])
+    }
+
+    func testSortedByKeyPath3() {
+        let subject = ["100", "200", "1", "300.1", "300.0", "0", "1000"]
+
+        XCTAssertEqual(
+            subject.sorted(by: \.count, secondary: \.self, tertiary: \.doubleValue!),
+            ["0", "1", "100", "200", "1000", "300.0", "300.1"]
+        )
+    }
+
     func testEndsWith() {
         let subject = [1, 2, 3, 4, 5]
         
