@@ -8,12 +8,14 @@ import Foundation
 public extension Array {
     
     /// Modifies the array in place, removing and returning its first element, if it exists.
+    @discardableResult
     mutating func removeFirstIfExists() -> Element? {
         if self.isEmpty { nil }
         else { self.removeFirst() }
     }
     
     /// Modifies the array in place, removing and returning its last element, if it exists.
+    @discardableResult
     mutating func removeLastIfExists() -> Element? {
         if self.isEmpty { nil }
         else { self.removeLast() }
