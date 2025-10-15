@@ -34,6 +34,15 @@ public extension Array {
             }
         }
     }
+
+    /// Moves an element from the specified `fromOffset` to the specified `toOffset`.
+    ///
+    /// - Parameter fromOffset: The index of the element to move.
+    /// - Parameter toOffset: The index to which the element should be moved.
+    mutating func move(fromOffset: Int, toOffset: Int) {
+        if fromOffset == toOffset { return } // fast path
+        insert(remove(at: fromOffset), at: toOffset)
+    }
 }
 
 public extension Array where Element: Equatable {

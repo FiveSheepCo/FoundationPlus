@@ -195,4 +195,27 @@ final class ArrayTests: XCTestCase {
         XCTAssertIdentical(newSubject[0], a)
         XCTAssertIdentical(newSubject[1], c)
     }
+
+    func testMove() {
+
+        // forwards move
+        var subject = [1, 2, 3, 4, 5]
+        subject.move(fromOffset: 0, toOffset: 4)
+        XCTAssertEqual(subject, [2, 3, 4, 5, 1])
+
+        // backwards move
+        subject = [1, 2, 3, 4, 5]
+        subject.move(fromOffset: 4, toOffset: 0)
+        XCTAssertEqual(subject, [5, 1, 2, 3, 4])
+
+        // swap
+        subject = [0, 1]
+        subject.move(fromOffset: 0, toOffset: 1)
+        XCTAssertEqual(subject, [1, 0])
+
+        // no-op
+        subject = [0]
+        subject.move(fromOffset: 0, toOffset: 0)
+        XCTAssertEqual(subject, [0])
+    }
 }
