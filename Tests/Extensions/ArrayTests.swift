@@ -198,15 +198,25 @@ final class ArrayTests: XCTestCase {
 
     func testMove() {
 
-        // forwards move
+        // forward move
         var subject = [1, 2, 3, 4, 5]
         subject.move(fromOffset: 0, toOffset: 4)
         XCTAssertEqual(subject, [2, 3, 4, 5, 1])
 
-        // backwards move
+        // forward move 2
+        subject = [0, 1, 2, 3]
+        subject.move(fromOffset: 1, toOffset: 3)
+        XCTAssertEqual(subject, [0, 2, 3, 1])
+
+        // backward move
         subject = [1, 2, 3, 4, 5]
         subject.move(fromOffset: 4, toOffset: 0)
         XCTAssertEqual(subject, [5, 1, 2, 3, 4])
+
+        // backward move 2
+        subject = [1, 2, 3, 4]
+        subject.move(fromOffset: 2, toOffset: 1)
+        XCTAssertEqual(subject, [1, 3, 2, 4])
 
         // swap
         subject = [0, 1]
