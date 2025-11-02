@@ -228,4 +228,16 @@ final class ArrayTests: XCTestCase {
         subject.move(fromOffset: 0, toOffset: 0)
         XCTAssertEqual(subject, [0])
     }
+
+    func testAppendingElement() {
+        XCTAssertEqual([Int]().appending(1).appending(2), [1, 2])
+        XCTAssertEqual([1].appending(2).appending(3), [1, 2, 3])
+    }
+
+    func testAppendingElements() {
+        XCTAssertEqual([Int]().appending(contentsOf: [Int]()), [Int]())
+        XCTAssertEqual([Int]().appending(contentsOf: [1, 2]), [1, 2])
+        XCTAssertEqual([1].appending(contentsOf: [2, 3]), [1, 2, 3])
+        XCTAssertEqual([1, 2].appending(contentsOf: [Int]()), [1, 2])
+    }
 }
