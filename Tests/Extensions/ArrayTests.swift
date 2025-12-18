@@ -240,4 +240,38 @@ final class ArrayTests: XCTestCase {
         XCTAssertEqual([1].appending(contentsOf: [2, 3]), [1, 2, 3])
         XCTAssertEqual([1, 2].appending(contentsOf: [Int]()), [1, 2])
     }
+
+    func testAverageBinaryInt() {
+        XCTAssertEqual([1, 2, 3, 4, 5, 6].average, 3.5)
+        XCTAssertEqual([1, 2, 3, 6, 2, 1].average, 2.5)
+        XCTAssertEqual([10, 50, 25, 0, 8].average, 18.6)
+        XCTAssertEqual([1, 2, 2, 2, 100].average, 21.4)
+        XCTAssertEqual([1].average, 1.0)
+        XCTAssertTrue([Int]().average.isNaN)
+    }
+
+    func testAverageBinaryFP() {
+        XCTAssertEqual([1.0, 2.0, 3.0, 4.0, 5.0, 6.0].average, 3.5)
+        XCTAssertEqual([1.0, 2.0, 3.0, 6.0, 2.0, 1.0].average, 2.5)
+        XCTAssertEqual([10.0, 50.0, 25.0, 0.0, 8.0].average, 18.6)
+        XCTAssertEqual([1.0, 2.0, 2.0, 2.0, 100.0].average, 21.4)
+        XCTAssertEqual([1.0].average, 1.0)
+        XCTAssertTrue([Double]().average.isNaN)
+    }
+
+    func testMedianBinaryInt() {
+        XCTAssertEqual([10, 50, 25, 0, 8].median, 10.0)
+        XCTAssertEqual([1, 2, 2, 2, 100].median, 2.0)
+        XCTAssertEqual([1, 2, 100, 101].median, 51.0)
+        XCTAssertEqual([1].median, 1.0)
+        XCTAssertTrue([Int]().median.isNaN)
+    }
+
+    func testMedianBinaryFP() {
+        XCTAssertEqual([10.0, 50.0, 25.0, 0.0, 8.0].median, 10.0)
+        XCTAssertEqual([1.0, 2.0, 2.0, 2.0, 100.0].median, 2.0)
+        XCTAssertEqual([1.0, 2.0, 100.0, 101.0].median, 51.0)
+        XCTAssertEqual([1.0].median, 1.0)
+        XCTAssertTrue([Double]().median.isNaN)
+    }
 }

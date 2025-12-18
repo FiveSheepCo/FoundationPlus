@@ -181,3 +181,75 @@ public extension Array where Element: Equatable {
         return Array(self[startIndex..<count]) == suffix
     }
 }
+
+public extension Array where Element: BinaryInteger {
+
+    /// The average (arithmetic mean) of all elements in the array.
+    ///
+    /// Returns `NaN` if the array is empty. The average is calculated by dividing the sum of all elements
+    /// by the count of elements in the array. The result is returned as a `Double`.
+    var average: Double {
+        guard !self.isEmpty else {
+            return Double.nan
+        }
+
+        let sum = self.reduce(0, +)
+        return Double(sum) / Double(self.count)
+    }
+
+    /// The median value of the array.
+    ///
+    /// Returns `NaN` if the array is empty. The array is first sorted to compute the median.
+    /// If the number of elements is odd, returns the middle element. If even, returns the average
+    /// of the two middle elements. The result is returned as a `Double`.
+    var median: Double {
+        guard !self.isEmpty else {
+            return Double.nan
+        }
+
+        let sorted = self.sorted()
+        let midIndex = sorted.count / 2
+
+        return if sorted.count % 2 == 0 {
+            Double(sorted[midIndex - 1] + sorted[midIndex]) / 2.0
+        } else {
+            Double(sorted[midIndex])
+        }
+    }
+}
+
+public extension Array where Element: BinaryFloatingPoint {
+
+    /// The average (arithmetic mean) of all elements in the array.
+    ///
+    /// Returns `NaN` if the array is empty. The average is calculated by dividing the sum of all elements
+    /// by the count of elements in the array. The result is returned as a `Double`.
+    var average: Double {
+        guard !self.isEmpty else {
+            return Double.nan
+        }
+
+        let sum = self.reduce(0, +)
+        return Double(sum) / Double(self.count)
+    }
+
+    /// The median value of the array.
+    ///
+    /// Returns `NaN` if the array is empty. The array is first sorted to compute the median.
+    /// If the number of elements is odd, returns the middle element. If even, returns the average
+    /// of the two middle elements. The result is returned as a `Double`.
+    var median: Double {
+        guard !self.isEmpty else {
+            return Double.nan
+        }
+
+        let sorted = self.sorted()
+        let midIndex = sorted.count / 2
+
+        return if sorted.count % 2 == 0 {
+            Double(sorted[midIndex - 1] + sorted[midIndex]) / 2.0
+        } else {
+            Double(sorted[midIndex])
+        }
+    }
+}
