@@ -3,6 +3,7 @@ import Combine
 
 @testable import FoundationPlus
 
+@MainActor
 final class EquatablePublishedTests: XCTestCase {
     private var cancellables: Set<AnyCancellable> = []
 
@@ -46,7 +47,8 @@ final class EquatablePublishedTests: XCTestCase {
 extension EquatablePublishedTests {
     
     // Helper class to use in tests
-    private class TestClass: ObservableObject {
+    @MainActor
+    private class TestClass: @MainActor ObservableObject {
         let objectWillChange = ObservableObjectPublisher()
         
         @EquatablePublished var myProperty: Int = 1

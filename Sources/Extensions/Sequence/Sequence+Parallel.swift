@@ -1,7 +1,7 @@
 import Foundation
 
-public extension Sequence {
-    
+public extension Sequence where Element: Sendable {
+
     /// Performs a map operation on the sequence's elements concurrently.
     ///
     /// The transformed elements are collected
@@ -15,14 +15,14 @@ public extension Sequence {
     /// - Returns: An array of transformed values `T`.
     /// - Throws: Rethrows any errors encountered during the filtering process. Due to implementation details,
     ///   `parallelMap` can't use the `rethrows` keyword. In practice, it only throws if the `transform` function throws.
-    func parallelMap<T>(
+    func parallelMap<T: Sendable>(
         preservingOrder: Bool = true,
-        _ transform: @escaping (Element) async throws -> T
+        _ transform: @Sendable @escaping (Element) async throws -> T
     ) async rethrows -> [T] {
         try await withThrowingTaskGroup(of: (Int, T).self, returning: [T].self) { group in
             var results: [(Int, T)] = []
             results.reserveCapacity(self.underestimatedCount)
-            
+
             var index = 0
             for element in self {
                 let indexCopy = index
@@ -31,11 +31,11 @@ public extension Sequence {
                 }
                 index += 1
             }
-            
+
             for try await (index, element) in group {
                 results.append((index, element))
             }
-            
+
             return if preservingOrder {
                 results
                     .sorted(by: \.0, ascending: true)
@@ -45,7 +45,7 @@ public extension Sequence {
             }
         }
     }
-    
+
     /// Performs a filter operation on the sequence's elements concurrently.
     ///
     /// Elements that satisfy the closure (return `true`)
@@ -61,11 +61,11 @@ public extension Sequence {
     ///   `parallelFilter` can't use the `rethrows` keyword. In practice, it only throws if the `isIncluded` function throws.
     func parallelFilter(
         preservingOrder: Bool = true,
-        _ isIncluded: @escaping (Element) async throws -> Bool
+        _ isIncluded: @Sendable @escaping (Element) async throws -> Bool
     ) async throws -> [Element] {
         try await withThrowingTaskGroup(of: Optional<(Int, Element)>.self, returning: [Element].self) { group in
             var results = [(Int, Element)]()
-            
+
             var index = 0
             for element in self {
                 let indexCopy = index
@@ -74,13 +74,13 @@ public extension Sequence {
                 }
                 index += 1
             }
-            
+
             for try await result in group {
                 if let (index, element) = result {
                     results.append((index, element))
                 }
             }
-            
+
             return if preservingOrder {
                 results
                     .sorted(by: \.0, ascending: true)

@@ -17,7 +17,7 @@ import Combine
 /// ```
 ///
 /// In this example, changes to `myProperty` will automatically trigger updates on the main thread, even if called from a background thread.
-@propertyWrapper
+@propertyWrapper @MainActor
 public struct BackgroundPublished<Value> {
     
     private var value: Value

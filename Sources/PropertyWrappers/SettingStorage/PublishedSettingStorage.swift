@@ -18,7 +18,7 @@ import Combine
 /// ```
 ///
 /// In this example, `mySetting` is stored in `UserDefaults` and changes to it will be published.
-@propertyWrapper
+@propertyWrapper @MainActor
 public struct PublishedSettingStorage<Value> {
     private let explicitKey: String?
     private var initialValue: Value

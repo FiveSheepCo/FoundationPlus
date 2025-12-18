@@ -18,7 +18,7 @@ typealias CombinePublisher = Combine.Publisher
 /// ```
 ///
 /// In this example, `myProperty` will only trigger updates to any subscribers when the value actually changes.
-@propertyWrapper
+@propertyWrapper @MainActor
 public struct EquatablePublished<Value: Equatable> {
     private var publisher: Publisher?
     private var storage: Storage

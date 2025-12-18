@@ -25,7 +25,7 @@ public extension Timer {
     static func scheduledTimer(
         withTimeInterval timeInterval: TimeInterval,
         repeats: Bool = false,
-        block: @escaping () -> Void
+        block: @Sendable @escaping () -> Void
     ) -> Timer {
         self.scheduledTimer(withTimeInterval: timeInterval, repeats: repeats, block: { _ in
             block()
