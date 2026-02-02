@@ -15,6 +15,7 @@ public extension String {
     /// - Parameter string: The string to be removed from the start of the string.
     /// - Returns: A new string with all occurrences of `string` removed from the start of the string.
     func removingOccurrences(ofPrefix string: String) -> String {
+        guard !string.isEmpty else { return self }
         let targetStringUtf16Count = string.utf16.count
         var substring = self[startIndex..<endIndex]
         while substring.hasPrefix(string) {
@@ -28,6 +29,7 @@ public extension String {
     /// - Parameter string: The string to be removed from the end of the string.
     /// - Returns: A new string with all occurrences of `string` removed from the end of the string.
     func removingOccurrences(ofSuffix string: String) -> String {
+        guard !string.isEmpty else { return self }
         let targetStringUtf16Count = string.utf16.count
         var substring = self[startIndex..<endIndex]
         while substring.hasSuffix(string) {
