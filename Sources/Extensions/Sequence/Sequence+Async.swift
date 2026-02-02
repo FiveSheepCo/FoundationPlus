@@ -16,6 +16,7 @@ public extension Sequence {
         _ transform: (Element) async throws -> T
     ) async rethrows -> [T] {
         var values = [T]()
+        values.reserveCapacity(self.underestimatedCount)
 
         for element in self {
             try await values.append(transform(element))
