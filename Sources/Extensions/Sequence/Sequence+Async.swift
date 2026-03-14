@@ -1,6 +1,6 @@
 import Foundation
 
-public extension Sequence {
+public extension Sequence where Element: Sendable {
     
     /// Returns an array containing the results of asynchronously mapping
     /// the given closure over the sequence's elements.
@@ -13,7 +13,7 @@ public extension Sequence {
     ///
     /// - Complexity: O(*n*), where *n* is the length of the sequence.
     @inlinable func asyncMap<T>(
-        _ transform: (Element) async throws -> T
+        _ transform: @Sendable (Element) async throws -> T
     ) async rethrows -> [T] {
         var values = [T]()
         values.reserveCapacity(self.underestimatedCount)
@@ -35,7 +35,7 @@ public extension Sequence {
     ///
     /// - Complexity: O(*n*), where *n* is the length of the sequence.
     @inlinable func asyncFilter(
-        _ include: (Element) async throws -> Bool
+        _ include: @Sendable (Element) async throws -> Bool
     ) async rethrows -> [Element] {
         var values = [Element]()
         
@@ -72,9 +72,9 @@ public extension Sequence {
     ///   the result is `initialResult`.
     ///
     /// - Complexity: O(*n*), where *n* is the length of the sequence.
-    @inlinable func asyncReduce<Result>(
+    @inlinable func asyncReduce<Result: Sendable>(
         _ initialResult: Result,
-        _ nextPartialResult: (Result, Element) async throws -> Result
+        _ nextPartialResult: @Sendable (Result, Element) async throws -> Result
     ) async rethrows -> Result {
         var result = initialResult
         
