@@ -59,7 +59,7 @@ public extension Array where Element: Equatable {
     ///
     /// - Parameter subject: The element to remove from the array.
     mutating func removeAll(subject: Element) {
-        for i in (0..<self.count).reversed() where self[i] == subject {
+        for i in self.indices.reversed() where self[i] == subject {
             self.remove(at: i)
         }
     }
