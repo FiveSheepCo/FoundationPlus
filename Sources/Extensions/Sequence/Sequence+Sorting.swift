@@ -1,6 +1,6 @@
 import Foundation
 
-public extension Array {
+public extension Sequence {
     
     /// Sorts the array based on a specified key path of its elements.
     ///
