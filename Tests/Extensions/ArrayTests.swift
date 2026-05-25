@@ -132,6 +132,14 @@ final class ArrayTests: XCTestCase {
         XCTAssertFalse(subject.ends(with: [3, 4]))
     }
     
+    func testEndsWithInvalidIndex() {
+        let subject: [Int] = []
+        
+        XCTAssertTrue(subject.ends(with: []))
+        XCTAssertFalse(subject.ends(with: [1]))
+        XCTAssertFalse(subject.ends(with: [1, 2, 3, 4, 5]))
+    }
+    
     func removeFirstIfExists() {
         var subject = [1, 2, 3, 4, 5]
         
