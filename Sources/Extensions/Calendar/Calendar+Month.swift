@@ -11,6 +11,7 @@ public extension Calendar {
     ///
     /// - Parameter date: The `Date` object for which the first day of the month is calculated.
     /// - Returns: A `Date` representing the first day of the month, or `nil` if the calculation fails.
+    @inlinable
     func firstOfMonth(_ date: Date) -> Date? {
         let components = self.dateComponents(
             [.calendar, .timeZone, .era, .year, .quarter, .month],
@@ -32,6 +33,7 @@ public extension Calendar {
     /// - Returns: A `Date` representing the last day of the month, or `nil` if the calculation fails.
     ///
     /// - Note: If ``firstOfMonth(_:)`` fails, this will fail too.
+    @inlinable
     func lastOfMonth(_ date: Date) -> Date? {
         guard let date = self.firstOfMonth(date) else { return nil }
         guard let date = self.date(byAdding: DateComponents(month: 1), to: date) else { return nil }

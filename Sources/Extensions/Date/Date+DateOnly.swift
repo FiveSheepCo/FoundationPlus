@@ -14,6 +14,7 @@ public extension Date {
     /// ```
     ///
     /// - Returns: A `Date` object representing the start of the day for the date's year, month, and day.
+    @inlinable
     var dateOnly: Date {
         get {
             let calendar = Calendar.current

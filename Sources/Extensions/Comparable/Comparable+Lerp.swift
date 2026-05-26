@@ -8,7 +8,7 @@ public extension Comparable where Self: ExpressibleByFloatLiteral & FloatingPoin
     /// ```
     /// Double.lerp(0, 100, 0.5) // 50.0
     /// ```
-    @inline(__always)
+    @inlinable @inline(__always)
     static func lerp(a: Self, b: Self, t: Self) -> Self {
         (1.0 - t) * a + t * b
     }

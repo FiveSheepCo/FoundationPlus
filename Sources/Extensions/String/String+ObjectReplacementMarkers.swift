@@ -8,6 +8,7 @@ public extension String {
     ///
     /// For some reason, the dictation feature inserts this marker at the end of the string.
     /// For RTL languages like arabic, it's at the beginning of the string.
+    @inlinable
     func removingObjectReplacementMarkers() -> String {
         self.replacingOccurrences(of: "\u{fffc}", with: "", options: String.CompareOptions.literal, range: nil)
     }

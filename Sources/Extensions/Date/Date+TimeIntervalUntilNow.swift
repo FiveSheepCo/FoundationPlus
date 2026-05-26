@@ -15,6 +15,7 @@ public extension Date {
     /// ```
     ///
     /// - Remark: Equivalent to `-timeIntervalSinceNow`.
+    @inlinable @inline(__always)
     var timeIntervalUntilNow: TimeInterval {
         -timeIntervalSinceNow
     }
@@ -32,6 +33,7 @@ public extension Date {
     /// ```
     ///
     /// - Remark: Inverse of `init(timeIntervalSinceNow:)`.
+    @inlinable
     init(timeIntervalUntilNow: TimeInterval) {
         self.init(timeIntervalSinceNow: -timeIntervalUntilNow)
     }

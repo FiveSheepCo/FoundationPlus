@@ -69,6 +69,7 @@ public extension Double {
      - Parameters:
        - style: The formatting style to use. Defaults to `.natural`.
     */
+    @inlinable
     func toFormattedString(_ style: Self.FormattingStyle) -> String {
         let formatter = NumberFormatter()
         switch style {

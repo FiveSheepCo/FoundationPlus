@@ -15,9 +15,9 @@ public extension Character {
      ```
      
      - Remark: This property enables more ergonomic optional chaining for character-to-string conversion.
-     
      - Returns: A `String` containing only the receiver character.
     */
+    @inlinable
     var toString: String {
         String(self)
     }

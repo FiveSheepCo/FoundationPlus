@@ -22,6 +22,7 @@ public extension Collection {
     /// ```
     ///
     /// - Returns: An `AnyIterator` yielding pairs of the form `(index: Index, element: Element)`.
+    @inlinable
     func indexed() -> AnyIterator<(index: Index, element: Element)> {
         var index = self.startIndex
         

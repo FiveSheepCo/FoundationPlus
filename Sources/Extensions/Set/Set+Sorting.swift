@@ -12,6 +12,7 @@ public extension Set {
     ///   - ascending: A Boolean value that determines whether the sorting is in ascending order.
     ///                `true` for ascending order, and `false` for descending. The default is `true`.
     /// - Returns: A new array containing the elements of the original array, sorted based on the provided key path.
+    @inlinable
     func sorted<T: Comparable>(by keyPath: KeyPath<Element, T>, ascending: Bool = true) -> [Element] {
         sorted { a, b in
             let isAscending = a[keyPath: keyPath] < b[keyPath: keyPath]

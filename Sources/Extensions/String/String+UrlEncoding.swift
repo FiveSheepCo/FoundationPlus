@@ -1,8 +1,9 @@
 import Foundation
 
-private extension String {
+internal extension String {
     
     /// A character set containing allowed characters for percent-encoding.
+    @inlinable
     var urlAllowed: CharacterSet {
         CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "-._~")) // as per RFC 3986
     }
@@ -13,6 +14,7 @@ public extension String {
     /// A percent-encoded version of the string using the allowed character set for URLs.
     ///
     /// If encoding fails, the original string is returned.
+    @inlinable
     var urlEncoded: String {
         addingPercentEncoding(withAllowedCharacters: urlAllowed) ?? self
     }
@@ -20,6 +22,7 @@ public extension String {
     /// A percent-decoded version of the string.
     ///
     /// If decoding fails, the original string is returned.
+    @inlinable
     var urlDecoded: String {
         removingPercentEncoding ?? self
     }
@@ -29,6 +32,7 @@ public extension String {
     /// Percent-encodes the string using the allowed character set for URLs.
     ///
     /// Does nothing if encoding fails.
+    @inlinable
     mutating func urlEncode() {
         if let string = addingPercentEncoding(withAllowedCharacters: urlAllowed) {
             self = string
@@ -38,6 +42,7 @@ public extension String {
     /// Percent-decodes the string.
     ///
     /// Does nothing if decoding fails.
+    @inlinable
     mutating func urlDecode() {
         if let string = removingPercentEncoding {
             self = string

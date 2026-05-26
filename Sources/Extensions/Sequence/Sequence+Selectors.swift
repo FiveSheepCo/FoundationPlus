@@ -9,6 +9,7 @@ public extension Sequence where Element: Equatable {
     ///
     /// - Parameter subject: The element to remove from the array.
     /// - Returns: A new array containing all elements of the original array except for those equal to `subject`.
+    @inlinable
     func removingAll(subject: Element) -> [Element] {
         self.filter { $0 != subject }
     }
@@ -18,6 +19,7 @@ public extension Sequence where Element: Equatable {
     /// - Parameter subject: The element to remove from the array.
     /// - Returns: A new array containing all elements of the original array except for those equal to `subject`.
     @available(*, deprecated, renamed: "removingAll", message: "Use `removingAll(subject:)` instead.")
+    @inlinable
     func removing(subject: Element) -> [Element] {
         self.removingAll(subject: subject)
     }
@@ -38,6 +40,7 @@ public extension Sequence where Element: Equatable {
     /// let newArray = array.removing(exactObject: obj1)
     /// print(newArray.count) // Prints "1", since two instances of obj1 are removed
     /// ```
+    @inlinable
     func removing(exactObject object: Element) -> [Element] {
         let erasedObject = object as AnyObject?
         return self.filter { $0 as AnyObject? !== erasedObject }

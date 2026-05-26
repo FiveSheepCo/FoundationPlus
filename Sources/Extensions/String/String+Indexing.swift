@@ -6,6 +6,7 @@ public extension String {
     ///
     /// - Parameter offset: An `Int` value representing the offset from the start of the string.
     /// - Returns: A `String.Index` corresponding to the offset within the string.
+    @inlinable
     func indexAt(_ offset: Int) -> Index {
         index(startIndex, offsetBy: offset)
     }
@@ -14,6 +15,7 @@ public extension String {
     ///
     /// - Parameter range: An `NSRange` representing a range within the string.
     /// - Returns: A `Range<String.Index>` corresponding to the given `NSRange`.
+    @inlinable
     func indexRange(for range: NSRange) -> Range<String.Index> {
         indexAt(range.location)..<indexAt(range.location + range.length)
     }
@@ -24,6 +26,7 @@ public extension String {
     ///
     /// - Parameter offset: An `Int` value representing the offset from the start of the string.
     /// - Returns: The `Character` at the specified offset.
+    @inlinable
     subscript(_ offset: Int) -> Character {
         self[indexAt(offset)]
     }
@@ -32,6 +35,7 @@ public extension String {
     ///
     /// - Parameter range: A `Range<Int>` representing the range of characters.
     /// - Returns: A `Substring` containing the characters within the specified range.
+    @inlinable
     subscript(_ range: Range<Int>) -> Substring {
         self[indexAt(range.lowerBound)..<indexAt(range.upperBound)]
     }
@@ -40,6 +44,7 @@ public extension String {
     ///
     /// - Parameter range: A `ClosedRange<Int>` representing the range of characters.
     /// - Returns: A `Substring` containing the characters within the specified closed range.
+    @inlinable
     subscript(_ range: ClosedRange<Int>) -> Substring {
         self[indexAt(range.lowerBound)...indexAt(range.upperBound)]
     }
@@ -48,6 +53,7 @@ public extension String {
     ///
     /// - Parameter range: A `PartialRangeFrom<Int>` representing the starting point of the range.
     /// - Returns: A `Substring` starting from the specified lower bound to the end of the string.
+    @inlinable
     subscript(_ range: PartialRangeFrom<Int>) -> Substring {
         self[indexAt(range.lowerBound)...]
     }
@@ -56,6 +62,7 @@ public extension String {
     ///
     /// - Parameter range: A `PartialRangeUpTo<Int>` representing the upper bound of the range.
     /// - Returns: A `Substring` up to, but not including, the specified upper bound.
+    @inlinable
     subscript(_ range: PartialRangeUpTo<Int>) -> Substring {
         self[..<indexAt(range.upperBound)]
     }
@@ -64,6 +71,7 @@ public extension String {
     ///
     /// - Parameter range: A `PartialRangeThrough<Int>` representing the upper bound of the range.
     /// - Returns: A `Substring` including characters up to and including the specified upper bound.
+    @inlinable
     subscript(_ range: PartialRangeThrough<Int>) -> Substring {
         self[...indexAt(range.upperBound)]
     }
@@ -72,6 +80,7 @@ public extension String {
     ///
     /// - Parameter range: An `NSRange` representing the range of characters.
     /// - Returns: A `Substring` corresponding to the specified `NSRange`.
+    @inlinable
     subscript(_ range: NSRange) -> Substring {
         self[indexRange(for: range)]
     }

@@ -16,6 +16,7 @@ public extension Bool {
     /// ```
     ///
     /// - Returns: The negated (inverted) value of the Boolean.
+    @inlinable
     var negated: Self {
         !self
     }

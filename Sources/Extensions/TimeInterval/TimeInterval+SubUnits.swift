@@ -13,6 +13,7 @@ public extension TimeInterval {
     /// ```
     ///
     /// - Returns: Total number of days as a Double.
+    @inlinable @inline(__always)
     var days: Double {
         self / 86400
     }
@@ -28,6 +29,7 @@ public extension TimeInterval {
     /// ```
     ///
     /// - Returns: Total number of hours as a Double.
+    @inlinable @inline(__always)
     var hours: Double {
         self / 3600
     }
@@ -43,6 +45,7 @@ public extension TimeInterval {
     /// ```
     ///
     /// - Returns: Total number of minutes as a Double.
+    @inlinable @inline(__always)
     var minutes: Double {
         self / 60
     }
@@ -58,6 +61,7 @@ public extension TimeInterval {
     /// ```
     ///
     /// - Returns: Total number of seconds as a Double.
+    @inlinable @inline(__always)
     var seconds: Double {
         self
     }

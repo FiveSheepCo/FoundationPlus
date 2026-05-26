@@ -23,6 +23,7 @@ public extension Array where Element: Hashable {
     ///
     /// - Parameter mode: The mode of deduplication to use.
     /// - Returns: A new array with duplicates removed according to the specified mode.
+    @inlinable
     func removingDuplicates(_ mode: DeduplicationMode = .preservingOrder) -> [Element] {
         switch mode {
             case .preservingOrder:

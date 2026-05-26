@@ -17,6 +17,7 @@ public extension Double {
      
      - Returns: A `String` containing only the receiver number.
     */
+    @inlinable
     var toString: String {
         String(self)
     }

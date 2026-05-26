@@ -14,6 +14,7 @@ public extension Sequence {
     ///
     /// - Parameter predicate: A closure that takes an element of the array as its argument and returns a Boolean value.
     /// - Returns: `true` if any element in the array satisfies the given predicate; otherwise, `false`.
+    @inlinable
     func anySatisfy(_ predicate: (Element) -> Bool) -> Bool {
         for item in self where predicate(item) {
             return true
@@ -28,6 +29,7 @@ public extension Sequence {
     ///
     /// - Parameter predicate: A closure that takes an element of the array as its argument and returns a Boolean value.
     /// - Returns: `true` if no element in the array satisfies the given predicate; otherwise, `false`.
+    @inlinable
     func noneSatisfy(_ predicate: (Element) -> Bool) -> Bool {
         for item in self where predicate(item) {
             return false
@@ -41,6 +43,7 @@ public extension Sequence {
     /// - Parameter object: The object to search for in the collection.
     /// - Returns: `true` if the collection contains the object, `false` otherwise.
     /// - Note: This method compares objects by reference, not by value.
+    @inlinable
     func contains(exactObject object: Element) -> Bool {
         let erasedObject = object as AnyObject?
         for e in self where e as AnyObject? === erasedObject {
@@ -50,6 +53,7 @@ public extension Sequence {
     }
 
     /// Finds the minimum element in the array.
+    @inlinable
     func min<T: Comparable>(byValue value: KeyPath<Element, T>) -> Element? {
         self.min(by: {
             $0[keyPath: value] < $1[keyPath: value]
@@ -57,6 +61,7 @@ public extension Sequence {
     }
 
     /// Finds the maximum element in the array.
+    @inlinable
     func max<T: Comparable>(byValue value: KeyPath<Element, T>) -> Element? {
         self.max(by: {
             $0[keyPath: value] < $1[keyPath: value]
@@ -76,7 +81,7 @@ public extension Sequence where Element: Equatable {
     /// let array = [1, 2, 3, 4, 5]
     /// print(array.hasPrefix([1, 2])) // Prints "true"
     /// ```
-    @inline(__always)
+    @inlinable
     func hasPrefix(_ prefix: Self) -> Bool {
         self.starts(with: prefix)
     }

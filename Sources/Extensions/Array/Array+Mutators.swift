@@ -8,14 +8,14 @@ import Foundation
 public extension Array {
     
     /// Modifies the array in place, removing and returning its first element, if it exists.
-    @discardableResult
+    @discardableResult @inlinable
     mutating func removeFirstIfExists() -> Element? {
         if self.isEmpty { nil }
         else { self.removeFirst() }
     }
     
     /// Modifies the array in place, removing and returning its last element, if it exists.
-    @discardableResult
+    @discardableResult @inlinable
     mutating func removeLastIfExists() -> Element? {
         if self.isEmpty { nil }
         else { self.removeLast() }
@@ -26,6 +26,7 @@ public extension Array {
     /// - Parameter object: The object to be removed from the collection.
     /// - Note: This method compares objects by reference, not by value. If multiple instances of the object
     ///   exist in the collection, all instances will be removed.
+    @inlinable
     mutating func remove(exactObject object: Element) {
         let erasedObject = object as AnyObject?
         for i in (0..<self.count).reversed() {
@@ -39,6 +40,7 @@ public extension Array {
     ///
     /// - Parameter fromOffset: The index of the element to move.
     /// - Parameter toOffset: The index to which the element should be moved.
+    @inlinable
     mutating func move(fromOffset: Int, toOffset: Int) {
         if fromOffset == toOffset { return } // fast path
         insert(remove(at: fromOffset), at: toOffset)
@@ -51,6 +53,7 @@ public extension Array where Element: Equatable {
     ///
     /// - Parameter subject: The element to remove from the array.
     @available(*, deprecated, renamed: "removeAll", message: "Use `removeAll(subject:)` instead.")
+    @inlinable
     mutating func remove(subject: Element) {
         self.removeAll(subject: subject)
     }
@@ -58,6 +61,7 @@ public extension Array where Element: Equatable {
     /// Modifies the array in place, removing all occurrences of the specified element.
     ///
     /// - Parameter subject: The element to remove from the array.
+    @inlinable
     mutating func removeAll(subject: Element) {
         for i in self.indices.reversed() where self[i] == subject {
             self.remove(at: i)
@@ -68,6 +72,7 @@ public extension Array where Element: Equatable {
 public extension Array where Element: Hashable {
     
     /// Modifies the array in place, removing all duplicate elements.
+    @inlinable
     mutating func removeDuplicates() {
         self = removingDuplicates()
     }

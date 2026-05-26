@@ -22,6 +22,7 @@ public extension Timer {
     @available(tvOS 10.0, *)
     @available(OSX 10.12, *)
     @discardableResult
+    @inlinable
     static func scheduledTimer(
         withTimeInterval timeInterval: TimeInterval,
         repeats: Bool = false,

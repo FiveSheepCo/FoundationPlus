@@ -13,6 +13,7 @@ public extension Collection {
     /// - Parameter value: A key path that specifies the property to compare.
     /// - Returns: An optional tuple representing the minimum and maximum elements in the array, or `nil`
     ///   if the array is empty.
+    @inlinable
     func minmax<T: Comparable>(byValue value: KeyPath<Element, T>) -> (min: T, max: T)? {
         guard let firstElement = self.first else { return nil }
 
@@ -38,6 +39,7 @@ public extension Collection where Element: Comparable {
     ///
     /// - Returns: An optional tuple representing the minimum and maximum elements in the array, or `nil`
     ///   if the array is empty.
+    @inlinable
     func minmax() -> (min: Element, max: Element)? {
         guard let firstElement = self.first else { return nil }
         
@@ -62,6 +64,7 @@ public extension Collection where Element: Comparable & SignedNumeric {
     ///
     /// - Returns: An optional `Element` representing the element with the greatest magnitude, or `nil` if the
     ///   array is empty.
+    @inlinable
     func greatestMagnitude() -> Element? {
         guard let (min, max) = self.minmax() else { return nil }
         return Swift.max(abs(min), abs(max))
@@ -80,7 +83,7 @@ public extension Collection where Element: Equatable {
     /// let array = [1, 2, 3, 4, 5]
     /// print(array.hasSuffix([4, 5])) // Prints "true"
     /// ```
-    @inline(__always)
+    @inlinable
     func hasSuffix<S>(_ suffix: S) -> Bool where S: Collection<Element> {
         self.ends(with: suffix)
     }
@@ -97,6 +100,7 @@ public extension Collection where Element: Equatable {
     /// let array = [1, 2, 3, 4, 5]
     /// print(array.ends(with: [4, 5])) // Prints "true"
     /// ```
+    @inlinable
     func ends<S>(with suffix: S) -> Bool where S: Collection<Element> {
         let endIndex = self.endIndex
         let startIndex = self.index(endIndex, offsetBy: -suffix.count)
@@ -115,6 +119,7 @@ public extension Collection where Element: BinaryInteger {
     ///
     /// Returns `NaN` if the array is empty. The average is calculated by dividing the sum of all elements
     /// by the count of elements in the array. The result is returned as a `Double`.
+    @inlinable
     var average: Double {
         guard !self.isEmpty else {
             return Double.nan
@@ -129,6 +134,7 @@ public extension Collection where Element: BinaryInteger {
     /// Returns `NaN` if the array is empty. The array is first sorted to compute the median.
     /// If the number of elements is odd, returns the middle element. If even, returns the average
     /// of the two middle elements. The result is returned as a `Double`.
+    @inlinable
     var median: Double {
         guard !self.isEmpty else {
             return Double.nan
@@ -151,6 +157,7 @@ public extension Collection where Element: BinaryFloatingPoint {
     ///
     /// Returns `NaN` if the array is empty. The average is calculated by dividing the sum of all elements
     /// by the count of elements in the array. The result is returned as a `Double`.
+    @inlinable
     var average: Double {
         guard !self.isEmpty else {
             return Double.nan
@@ -165,6 +172,7 @@ public extension Collection where Element: BinaryFloatingPoint {
     /// Returns `NaN` if the array is empty. The array is first sorted to compute the median.
     /// If the number of elements is odd, returns the middle element. If even, returns the average
     /// of the two middle elements. The result is returned as a `Double`.
+    @inlinable
     var median: Double {
         guard !self.isEmpty else {
             return Double.nan

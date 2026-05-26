@@ -15,6 +15,7 @@ public extension TimeInterval {
     /// ```
     ///
     /// - Returns: The day component as a Double, disregarding leap years.
+    @inlinable
     var dayComponent: Double {
         days.truncatingRemainder(dividingBy: 365)
     }
@@ -32,6 +33,7 @@ public extension TimeInterval {
     /// ```
     ///
     /// - Returns: The hour component as a Double.
+    @inlinable
     var hourComponent: Double {
         hours.truncatingRemainder(dividingBy: 24)
     }
@@ -49,6 +51,7 @@ public extension TimeInterval {
     /// ```
     ///
     /// - Returns: The minute component as a Double.
+    @inlinable
     var minuteComponent: Double {
         minutes.truncatingRemainder(dividingBy: 60)
     }
@@ -66,6 +69,7 @@ public extension TimeInterval {
     /// ```
     ///
     /// - Returns: The second component as a Double.
+    @inlinable
     var secondComponent: Double {
         self.truncatingRemainder(dividingBy: 60)
     }
@@ -83,6 +87,7 @@ public extension TimeInterval {
     /// ```
     ///
     /// - Returns: A `DateComponents` object containing day, hour, minute, and second components.
+    @inlinable
     var dateComponents: DateComponents {
         DateComponents(
             day: Int(dayComponent),

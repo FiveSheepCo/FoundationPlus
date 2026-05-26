@@ -15,7 +15,7 @@ public extension Sequence where Element: Sendable {
     /// - Returns: An array of transformed values `T`.
     /// - Throws: Rethrows any errors encountered during the filtering process. Due to implementation details,
     ///   `parallelMap` can't use the `rethrows` keyword. In practice, it only throws if the `transform` function throws.
-    func parallelMap<T: Sendable>(
+    @inlinable func parallelMap<T: Sendable>(
         preservingOrder: Bool = true,
         _ transform: @Sendable @escaping (Element) async throws -> T
     ) async rethrows -> [T] {
@@ -59,7 +59,7 @@ public extension Sequence where Element: Sendable {
     /// - Returns: An array of elements that satisfy the predicate `isIncluded`.
     /// - Throws: Rethrows any errors encountered during the filtering process. Due to implementation details,
     ///   `parallelFilter` can't use the `rethrows` keyword. In practice, it only throws if the `isIncluded` function throws.
-    func parallelFilter(
+    @inlinable func parallelFilter(
         preservingOrder: Bool = true,
         _ isIncluded: @Sendable @escaping (Element) async throws -> Bool
     ) async throws -> [Element] {
