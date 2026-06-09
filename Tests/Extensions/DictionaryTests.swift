@@ -24,4 +24,12 @@ final class DictionaryTests: XCTestCase {
         XCTAssertEqual(dict.keys(for: 2).sorted(), ["b", "d"])
         XCTAssertEqual(dict.keys(for: 3), ["e"])
     }
+    
+    func testGetElseInsert() {
+        var dict = ["a": 1, "b": 2]
+        
+        XCTAssertEqual(dict.get("a", elseInsert: 3), 1)
+        XCTAssertEqual(dict.get("c", elseInsert: 3), 3)
+        XCTAssertTrue(dict.contains(where: { (key, value) in key == "c" && value == 3 }))
+    }
 }
